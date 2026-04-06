@@ -1,0 +1,327 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum ReactionType {
+  LIKE
+  DISLIKE
+}
+
+enum JapaneseLevel {
+  N5
+  N4
+  N3
+  N2
+  N1
+  NATIVE
+}
+
+enum DiscussionType {
+  QUESTION
+  MOCK_ANSWER
+  EXPERIENCE
+  RESUME_REVIEW
+}
+
+enum DiscussionStatus {
+  OPEN
+  SOLVED
+}
+
+model User {
+  id            String    @id @default(uuid())
+  name          String
+  email         String    @unique
+  passwordHash  String
+  image         String?
+  role          Role      @default(USER)
+  targetRole    String?   // e.g., "Frontend Engineer"
+  japaneseLevel JapaneseLevel?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  savedQuestions   SavedQuestion[]
+  mockInterviews   MockInterview[]
+  blogPosts        BlogPost[]
+  discussions      Discussion[]
+  comments         Comment[]
+  reactions        Reaction[]
+  savedDiscussions SavedDiscussion[]
+  savedMaterials   SavedMaterial[]
+  materialViews    MaterialView[]
+  progress         ProgressTracker?
+  codingSubmissions CodingSubmission[]
+}
+
+model Category {
+  id          String     @id @default(uuid())
+  name        String     @unique // e.g., "Self-introduction", "IT / software engineering"
+  description String?
+  
+  // Relations
+  questions   Question[]
+  materials   Material[]
+  threads     Discussion[]
+  codingQuestions CodingQuestion[]
+}
+
+model Question {
+  id                 String   @id @default(uuid())
+  title              String   // e.g., "Tell me about yourself"
+  titleEn            String?  // English translation
+  recommendedAnswer  String?  @db.Text
+  sampleAnswer       String?  @db.Text
+  badSampleAnswer    String?  @db.Text
+  tips               String?  @db.Text
+  commonMistakes     String?  @db.Text
+  evaluationCriteria String?  @db.Text
+  difficulty         String?  // e.g., "Beginner", "Intermediate", "Advanced"
+  categoryId         String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  // Relations
+  category           Category @relation(fields: [categoryId], references: [id])
+  savedBy            SavedQuestion[]
+}
+
+model SavedQuestion {
+  id         String   @id @default(uuid())
+  userId     String
+  questionId String
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionId])
+}
+
+model MockInterview {
+  id             String   @id @default(uuid())
+  userId         String
+  jobRole        String
+  difficulty     String
+  score          Int?
+  feedbackJson   Json?    // AI feedback (clarity, grammar, etc.)
+  completedAt    DateTime @default(now())
+
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  logs           InterviewLog[]
+}
+
+model InterviewLog {
+  id               String   @id @default(uuid())
+  mockInterviewId  String
+  questionText     String   @db.Text
+  userAudioUrl     String?
+  userAnswerText   String   @db.Text
+  aiFeedback       String   @db.Text
+  createdAt        DateTime @default(now())
+
+  mockInterview    MockInterview @relation(fields: [mockInterviewId], references: [id], onDelete: Cascade)
+}
+
+model Material {
+  id          String   @id @default(uuid())
+  title       String
+  description String?  @db.Text
+  type        String   // e.g., "video", "book", "article"
+  url         String
+  difficulty  String?
+  categoryId  String
+  isFeatured  Boolean  @default(false)
+  views       Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  category    Category @relation(fields: [categoryId], references: [id])
+  savedBy     SavedMaterial[]
+  viewLogs    MaterialView[]
+}
+
+model MaterialView {
+  id         String   @id @default(cuid())
+  materialId String
+  userId     String?
+  sessionId  String?
+  createdAt  DateTime @default(now())
+
+  material   Material @relation(fields: [materialId], references: [id])
+  user       User?    @relation(fields: [userId], references: [id])
+
+  @@index([materialId, userId])
+  @@index([materialId, sessionId])
+}
+
+model BlogPost {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  content     String   @db.Text // HTML or Markdown
+  published   Boolean  @default(false)
+  authorId    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  author      User     @relation(fields: [authorId], references: [id])
+}
+
+model Discussion {
+  id          String   @id @default(uuid())
+  title       String
+  content     String   @db.Text
+  language    String   @default("en")
+  authorId    String
+  categoryId  String
+  type        DiscussionType   @default(QUESTION)
+  status      DiscussionStatus @default(OPEN)
+  roleContext String?
+  levelContext JapaneseLevel?
+  prompt      String? @db.Text
+  companyContext String?
+  stageContext String?
+  outcomeContext String?
+  triedContext String? @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  lastActivityAt DateTime @default(now())
+
+  author      User     @relation(fields: [authorId], references: [id])
+  category    Category @relation(fields: [categoryId], references: [id])
+  comments    Comment[]
+  reactions   Reaction[]
+  savedBy     SavedDiscussion[]
+  translations ContentTranslation[]
+
+  @@index([categoryId, type])
+  @@index([status, lastActivityAt])
+  @@index([language])
+}
+
+model Reaction {
+  id           String       @id @default(uuid())
+  type         ReactionType
+  userId       String
+  discussionId String
+  createdAt    DateTime     @default(now())
+
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  discussion   Discussion @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, discussionId])
+}
+
+model SavedDiscussion {
+  id           String   @id @default(uuid())
+  userId       String
+  discussionId String
+  createdAt    DateTime @default(now())
+
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  discussion   Discussion @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, discussionId])
+}
+
+model Comment {
+  id           String   @id @default(uuid())
+  content      String   @db.Text
+  language     String   @default("en")
+  authorId     String
+  discussionId String
+  createdAt    DateTime @default(now())
+  isBestAnswer Boolean  @default(false)
+  feedbackClarity Int?
+  feedbackRelevance Int?
+  feedbackGrammar Int?
+  feedbackPoliteness Int?
+
+  author       User       @relation(fields: [authorId], references: [id])
+  discussion   Discussion @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+  translations ContentTranslation[]
+
+  @@index([discussionId, isBestAnswer])
+  @@index([language])
+}
+
+model ContentTranslation {
+  id               String   @id @default(uuid())
+  targetLanguage   String   // en, ru, ja, uz
+  translatedTitle  String?  @db.Text
+  translatedContent String   @db.Text
+  discussionId     String?
+  commentId        String?
+  createdAt        DateTime @default(now())
+
+  discussion       Discussion? @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+  comment          Comment?    @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  @@unique([discussionId, targetLanguage])
+  @@unique([commentId, targetLanguage])
+  @@index([targetLanguage])
+}
+
+model ProgressTracker {
+  id                String   @id @default(uuid())
+  userId            String   @unique
+  questionsPracticed Int     @default(0)
+  interviewsDone     Int     @default(0)
+  codingTasksDone    Int     @default(0)
+  
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model SavedMaterial {
+  id         String   @id @default(uuid())
+  userId     String
+  materialId String
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  material   Material @relation(fields: [materialId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, materialId])
+}
+
+model CodingQuestion {
+  id          String   @id @default(uuid())
+  title       String
+  description String   @db.Text
+  difficulty  String   // "Easy", "Medium", "Hard"
+  testCases   Json     // Array of { input: any[], expectedOutput: any }
+  initialCode String?  @db.Text
+  categoryId  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  category    Category @relation(fields: [categoryId], references: [id])
+  submissions CodingSubmission[]
+}
+
+model CodingSubmission {
+  id         String   @id @default(uuid())
+  userId     String
+  questionId String
+  code       String   @db.Text
+  status     String   // "PASS", "FAIL"
+  createdAt  DateTime @default(now())
+
+  user       User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question   CodingQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([userId, questionId])
+}
+

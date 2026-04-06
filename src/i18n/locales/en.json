@@ -1,0 +1,510 @@
+{
+  "nav": {
+    "questionBank": "Question Bank",
+    "materials": "Learning Materials",
+    "aiInterviewer": "AI Interviewer",
+    "community": "Community",
+    "faq": "FAQ",
+    "dashboard": "Dashboard",
+    "accountMenu": "Account",
+    "adminPanel": "Admin Panel",
+    "signOut": "Sign Out",
+    "logIn": "Log in",
+    "signUpFree": "Sign Up Free"
+  },
+  "footer": {
+    "tagline": "The premium platform for Japanese job interview preparation. Land your dream IT job in Japan with confidence.",
+    "features": "Features",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "blog": "Blog",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "newsletterTitle": "Stay Updated",
+    "newsletterSubtitle": "Get the latest interview tips and platform updates.",
+    "newsletterPlaceholder": "Your email address",
+    "newsletterButton": "Subscribe",
+    "copyright": "All rights reserved.",
+    "inspiredBy": "Inspired by JDU",
+    "builtFor": "Built for Japan IT careers"
+  },
+  "home": {
+    "heroBadge": "#1 Platform for Japan IT Interview Prep",
+    "heroTitle": "Prepare for Japanese Interviews",
+    "heroTitleAccent": "with Confidence",
+    "heroSubtitle": "The premium platform for students and job seekers aiming for IT careers in Japan. Master real interview questions, practice with our AI Interviewer, and sharpen your coding skills.",
+    "startNow": "Start Practice Now",
+    "tryAI": "Try AI Interviewer",
+    "heroStats": {
+      "users": "registered users",
+      "questions": "interview questions",
+      "coding": "coding challenges"
+    },
+    "features": {
+      "badge": "Full-stack interview prep platform",
+      "title": "Everything you need to succeed",
+      "subtitle": "Comprehensive tools designed specifically for the unique nuances of Japanese corporate interviews.",
+      "bank": {
+        "title": "Extensive Question Bank",
+        "desc": "Hundreds of real interview questions covering self-introductions, motivation, behavioral scenarios, and IT-specific topics."
+      },
+      "ai": {
+        "title": "AI Mock Interviewer",
+        "desc": "Practice your answers by text or voice. Receive instant AI feedback on clarity, Keigo politeness, and relevance."
+      },
+      "coding": {
+        "title": "IT Coding Practice",
+        "desc": "Prepare for technical assessments with a built-in coding environment featuring algorithms and practical tasks."
+      },
+      "materials": {
+        "title": "Learning Materials",
+        "desc": "Curated articles, guides, and resources to master Japanese interview culture, business etiquette, and Keigo."
+      },
+      "bilingual": {
+        "title": "Bilingual Content",
+        "desc": "All questions and sample answers available in both Japanese and English so nothing gets lost in translation."
+      },
+      "community": {
+        "title": "Active Community",
+        "desc": "Share experiences, discuss strategies, and learn from peers who have been interviewed at top Japanese tech firms."
+      },
+      "learnMore": "Learn more"
+    },
+    "categories": {
+      "title": "Popular Categories",
+      "subtitle": "Browse real interview questions grouped by topic.",
+      "questionsCount": "Qs",
+      "browseAll": "Browse all categories"
+    },
+    "materialsSection": {
+      "title": "Featured Learning Materials",
+      "subtitle": "Curated resources to accelerate your preparation.",
+      "exploreAll": "Explore all materials",
+      "videoGuide": "Video Guide",
+      "article": "Article"
+    },
+    "stats": {
+      "title": "Platform at a Glance",
+      "subtitle": "Real numbers from our platform â€” no guesswork, no inflated figures."
+    },
+    "why": {
+      "badge": "Built for Japan-bound IT professionals",
+      "title": "Why MensetsuPro is different",
+      "desc": "Most interview prep platforms focus on Western markets. MensetsuPro is built from the ground up for the unique world of Japanese IT hiring â€” from Keigo business language to the structured group discussion formats used at top firms.",
+      "points": [
+        "Interview questions from actual Japanese IT company interviews",
+        "AI feedback tuned for Japanese formality and tone (Keigo)",
+        "Categories organized by Japanese interview format",
+        "Bilingual support â€” English & Japanese throughout the platform",
+        "Community of peers who have interviewed at the same companies"
+      ]
+    },
+    "cta": {
+      "badge": "Start your Japan IT career journey today",
+      "title": "Ready to land your dream job in Japan?",
+      "subtitle": "Join MensetsuPro and start practicing with real questions, AI coaching, and a community that has walked the same path.",
+      "createAccount": "Create your free account",
+      "browseQuestions": "Browse Questions",
+      "noCard": "No credit card required. Start practicing instantly."
+    }
+  },
+  "dashboard": {
+    "sidebar": {
+      "title": "Dashboard",
+      "overview": "Overview",
+      "profile": "My Profile",
+      "coding": "Solved Code Questions",
+      "questions": "Saved Questions",
+      "interviews": "Mock Interviews",
+      "articles": "My Articles",
+      "materials": "Saved Materials",
+      "settings": "Settings"
+    },
+    "settings": {
+      "title": "Account Settings",
+      "subtitle": "Manage your platform preferences and security.",
+      "appearance": {
+        "title": "Appearance",
+        "desc": "Customize the look and feel of MensetsuPro.",
+        "theme": "Color Theme",
+        "themeDesc": "Switch between light and dark mode.",
+        "language": "Language Preference",
+        "languageDesc": "Change the site-wide interface language."
+      },
+      "notifications": {
+        "title": "Notifications",
+        "desc": "Control how MensetsuPro contacts you.",
+        "marketing": "Marketing Emails",
+        "marketingDesc": "Receive emails about new features, articles, and interview tips.",
+        "community": "Community Updates",
+        "communityDesc": "Get notified when someone replies to your threads."
+      },
+      "dangerZone": {
+        "title": "Danger Zone",
+        "desc": "Permanently delete your account and all associated data. This action cannot be undone.",
+        "delete": "Delete Account"
+      },
+      "save": "Save Preferences"
+    }
+  },
+  "questions": {
+    "title": "Interview Question Bank",
+    "subtitle": "Master the recurring questions asked by Japanese companies.",
+    "search": "Search questions...",
+    "allCategories": "All Categories",
+    "filter": "Filter",
+    "noQuestions": "No questions found.",
+    "save": "Save",
+    "saved": "Saved",
+    "viewAnswer": "View Answer",
+    "recommended": "Recommended Answer",
+    "sample": "Sample Answer",
+    "badSample": "Bad Sample Answer",
+    "tips": "Tips",
+    "difficulty": "Difficulty"
+  },
+  "materials": {
+    "title": "Learning Materials",
+    "subtitle": "Curated resources for your success."
+  },
+  "ai": {
+    "title": "AI Interview",
+    "subtitle": "Configure and start your practice session."
+  },
+  "community": {
+    "title": "Community Discussions",
+    "subtitle": "Learn from others and share your experience.",
+    "newPost": {
+      "title": "Start a New Discussion",
+      "type": "Post type",
+      "category": "Category",
+      "selectCategory": "Select a category",
+      "language": "Post Language",
+      "languageDesc": "Identify the primary language of your content for better translation accuracy.",
+      "postTitle": "Title",
+      "placeholderTitle": "Summarize the discussion outcome you want",
+      "details": "Discussion details",
+      "submit": "Post Discussion"
+    },
+    "search": "Search posts...",
+    "trending": "Trending",
+    "latest": "Latest",
+    "unanswered": "Unanswered",
+    "translate": "Translate to my language",
+    "showOriginal": "Show Original",
+    "translatedByAI": "Auto-translated by AI",
+    "originalLanguage": "Original language",
+    "noPosts": "No discussions found."
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to your account.",
+      "email": "Email address",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "button": "Sign In",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "register": {
+      "title": "Create an Account",
+      "subtitle": "Start your journey with MensetsuPro.",
+      "name": "Full Name",
+      "email": "Email address",
+      "password": "Password",
+      "button": "Sign Up",
+      "hasAccount": "Already have an account?",
+      "logIn": "Log in"
+    },
+    "errors": {
+      "database": "The database is currently unavailable. Please try again later.",
+      "invalidCredentials": "Invalid email or password",
+      "registrationFailed": "Registration failed",
+      "generic": "An unexpected error occurred. Please try again."
+    }
+  },
+  "common": {
+    "save": "Save",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "theme": "Theme",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode",
+    "language": "Language",
+    "next": "Next",
+    "back": "Back",
+    "error": "Error",
+    "success": "Success"
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "nav": {
+      "overview": "Overview",
+      "users": "Users",
+      "questions": "Questions",
+      "codingTest": "Coding Test",
+      "categories": "Categories",
+      "materials": "Materials",
+      "moderation": "Moderation"
+    },
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "subtitle": "Monitor the whole platform, recent activity, and moderation-sensitive content from one place.",
+      "contentHealth": "Content Health",
+      "topCategories": "Top Categories",
+      "adminActions": "Admin Actions",
+      "recentUsers": "Recent Users",
+      "recentDiscussions": "Recent Discussions",
+      "recentBlogs": "Recent Blogs",
+      "noCategoryActivity": "No category activity yet.",
+      "items": "items",
+      "comments": "comments",
+      "published": "Published",
+      "draft": "Draft",
+      "stats": {
+        "users": "Users",
+        "questionBank": "Question Bank",
+        "community": "Community",
+        "platformActivity": "Platform Activity",
+        "admins": "admins",
+        "materials": "materials",
+        "comments": "comments",
+        "reactions": "reactions"
+      },
+      "actions": {
+        "manageUsers": "Manage users",
+        "manageQuestions": "Manage question bank",
+        "manageCoding": "Manage coding tests",
+        "manageMaterials": "Manage materials",
+        "moderate": "Moderate blogs and community",
+        "goToModeration": "Go to moderation"
+      },
+      "contentTypes": {
+        "publishedBlogs": "Published blog posts",
+        "totalBlogs": "Total blog posts",
+        "questions": "Questions",
+        "materials": "Materials",
+        "codingTasks": "Coding logic tasks"
+      }
+    },
+    "users": {
+      "title": "Manage Users",
+      "subtitle": "Create accounts, promote admins, and remove users across the site.",
+      "createUser": "Create User",
+      "allUsers": "All Users",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "password": "Password",
+        "role": "Role",
+        "targetRole": "Target Role",
+        "japaneseLevel": "Japanese Level"
+      },
+      "placeholders": {
+        "fullName": "Full name",
+        "email": "name@example.com",
+        "tempPassword": "Temporary password",
+        "frontendEngineer": "Frontend Engineer"
+      },
+      "roles": {
+        "user": "User",
+        "admin": "Admin"
+      },
+      "jlpt": {
+        "notSet": "Not set",
+        "noJlptSet": "No JLPT set"
+      },
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "role": "Role",
+        "profile": "Profile",
+        "activity": "Activity",
+        "joined": "Joined",
+        "actions": "Actions",
+        "threads": "threads",
+        "comments": "comments",
+        "blogs": "blogs",
+        "interviews": "interviews",
+        "noUsersFound": "No users found."
+      }
+    },
+    "questions": {
+      "title": "Question Bank",
+      "subtitle": "Add and remove interview questions across the site.",
+      "addQuestion": "Add Question",
+      "allQuestions": "All Questions",
+      "fields": {
+        "title": "Title",
+        "titleEn": "English translation",
+        "category": "Category",
+        "difficulty": "Difficulty",
+        "recommendedAnswer": "Recommended answer structure",
+        "sampleAnswer": "Sample answer",
+        "badSampleAnswer": "Bad sample answer (Mistake example)",
+        "tips": "Tips",
+        "commonMistakes": "Common mistakes",
+        "evaluationCriteria": "Evaluation Criteria"
+      },
+      "placeholders": {
+        "title": "Tell me about yourself",
+        "titleEn": "Please introduce yourself",
+        "difficulty": "Beginner, Intermediate, Advanced",
+        "recommendedAnswer": "Explain how the user should structure their answer...",
+        "badSampleAnswer": "Optional: Example of what NOT to say",
+        "evaluationCriteria": "Criteria for AI to evaluate answers (e.g., must mention problem, action, result)",
+        "selectCategory": "Select category"
+      },
+      "table": {
+        "title": "Title",
+        "category": "Category",
+        "difficulty": "Difficulty",
+        "saves": "Saves",
+        "added": "Added",
+        "actions": "Actions",
+        "noQuestionsFound": "No questions found.",
+        "noEnglishTranslation": "No English translation"
+      }
+    },
+    "materials": {
+      "title": "Learning Materials",
+      "subtitle": "Add, update, feature, and remove curated resources.",
+      "addMaterial": "Add Material",
+      "allMaterials": "All Materials",
+      "fields": {
+        "title": "Title",
+        "type": "Type",
+        "category": "Category",
+        "url": "URL",
+        "difficulty": "Difficulty",
+        "description": "Description",
+        "isFeatured": "Feature this material on the public materials page",
+        "featuredShort": "Featured",
+        "views": "views"
+      },
+      "types": {
+        "article": "Article",
+        "video": "Video",
+        "book": "Book"
+      },
+      "placeholders": {
+        "title": "Mastering Japanese IT Interviews",
+        "url": "https://example.com/resource",
+        "difficulty": "Beginner, Intermediate, Advanced",
+        "selectCategory": "Select category"
+      },
+      "noMaterialsFound": "No materials found."
+    },
+    "moderation": {
+      "title": "Moderation and Site Content",
+      "subtitle": "Review community activity, comments, and blog publishing from one place.",
+      "discussions": {
+        "title": "Recent Discussions",
+        "table": {
+          "thread": "Thread",
+          "author": "Author",
+          "category": "Category",
+          "engagement": "Engagement",
+          "status": "Status",
+          "actions": "Actions",
+          "comments": "comments",
+          "reactions": "reactions",
+          "noDiscussions": "No discussions found."
+        }
+      },
+      "comments": {
+        "title": "Recent Comments",
+        "table": {
+          "comment": "Comment",
+          "author": "Author",
+          "thread": "Thread",
+          "bestAnswer": "Best Answer",
+          "actions": "Actions",
+          "yes": "Yes",
+          "no": "No",
+          "noComments": "No comments found."
+        }
+      },
+      "blog": {
+        "title": "Blog Publishing",
+        "table": {
+          "title": "Title",
+          "author": "Author",
+          "status": "Status",
+          "created": "Created",
+          "actions": "Actions",
+          "published": "Published",
+          "draft": "Draft",
+          "publish": "Publish",
+          "unpublish": "Unpublish",
+          "noPosts": "No blog posts found."
+        }
+      }
+    },
+    "categories": {
+      "title": "Categories",
+      "subtitle": "Manage taxonomy used across questions, materials, and community threads.",
+      "addCategory": "Add Category",
+      "allCategories": "All Categories",
+      "fields": {
+        "name": "Name",
+        "description": "Description",
+        "questions": "questions",
+        "materials": "materials",
+        "threads": "threads"
+      },
+      "placeholders": {
+        "name": "Behavioral",
+        "description": "What this category is used for"
+      },
+      "noCategoriesFound": "No categories found."
+    },
+    "coding": {
+      "title": "Coding Test Bank",
+      "subtitle": "Manage algorithm and logic questions for the code evaluator.",
+      "addChallenge": "Add New Coding Challenge",
+      "addDescription": "Input basic parameters and JSON test cases to automatically evaluate user answers.",
+      "allChallenges": "Existing Coding Questions",
+      "fields": {
+        "title": "Title",
+        "difficulty": "Difficulty",
+        "category": "Category",
+        "description": "Problem Statement / Description",
+        "initialCode": "Initial Code Setup (Optional)",
+        "testCases": "Test Cases (Strict JSON array)",
+        "testCasesHint": "Format: [{\"input\": [[array or standard args]], \"expectedOutput\": \"expected answer\"}]",
+        "dateAdded": "Date Added"
+      },
+      "placeholders": {
+        "title": "e.g. Find Max Subarray",
+        "selectCategory": "Select a category...",
+        "description": "Explain the context and expectations...",
+        "initialCode": "function solve(args) {\n  // Your code here\n}"
+      },
+      "difficulties": {
+        "Beginner": "Beginner",
+        "Intermediate": "Intermediate",
+        "Advanced": "Advanced"
+      },
+      "messages": {
+        "createSuccess": "Question added perfectly!",
+        "deleteConfirm": "Are you sure you want to delete this coding question?",
+        "deleteSuccess": "Deleted successfully",
+        "deleteError": "Failed to delete",
+        "submissionFailed": "Submission Failed",
+        "dbError": "Database Error: Make sure you selected a valid category. Check console for details.",
+        "validationError": "Failed to create question due to validation error.",
+        "loading": "Loading...",
+        "noQuestions": "No coding questions found."
+      },
+      "buttons": {
+        "create": "Create Challenge"
+      }
+    }
+  }
+}
+

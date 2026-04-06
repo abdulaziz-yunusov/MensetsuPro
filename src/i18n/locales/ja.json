@@ -1,0 +1,509 @@
+{
+  "nav": {
+    "questionBank": "質問銀行",
+    "materials": "学習教材",
+    "aiInterviewer": "AIインタビュアー",
+    "community": "コミュニティ",
+    "faq": "FAQ",
+    "dashboard": "ダッシュボード",
+    "accountMenu": "アカウント",
+    "adminPanel": "管理パネル",
+    "signOut": "ログアウト",
+    "logIn": "ログイン",
+    "signUpFree": "無料でサインアップ"
+  },
+  "footer": {
+    "tagline": "日本での就職面接準備のためのプレミアム プラットフォーム。自信を持って日本でIT職を獲得しましょう。",
+    "features": "機能",
+    "company": "会社",
+    "aboutUs": "私たちについて",
+    "blog": "ブログ",
+    "contact": "お問い合わせ",
+    "privacyPolicy": "プライバシー ポリシー",
+    "termsOfService": "利用規約",
+    "newsletterTitle": "最新情報を取得",
+    "newsletterSubtitle": "最新の面接のコツとプラットフォームの更新を取得します。",
+    "newsletterPlaceholder": "メールアドレス",
+    "newsletterButton": "購読する",
+    "copyright": "著作権所有。",
+    "inspiredBy": "JDUからインスピレーションを受けた",
+    "builtFor": "日本のIT職を目指す人のために構築された"
+  },
+  "home": {
+    "heroBadge": "日本のIT面接対策プラットフォームNo.1",
+    "heroTitle": "日本の面接に備えよう",
+    "heroTitleAccent": "自信を持って",
+    "heroSubtitle": "日本でIT職を目指す学生や求職者向けのプレミアム プラットフォーム。実際の面接質問をマスターし、AIインタビュアーと練習し、コーディング スキルを磨きましょう。",
+    "startNow": "今すぐ練習を始める",
+    "tryAI": "AIインタビュアーを試す",
+    "heroStats": {
+      "users": "登録済みユーザー",
+      "questions": "面接質問",
+      "coding": "コーディング チャレンジ"
+    },
+    "features": {
+      "badge": "フルスタック面接対策プラットフォーム",
+      "title": "成功に必要なすべてのもの",
+      "subtitle": "日本の企業面接のユニークなニュアンスのために特別に設計された包括的なツール。",
+      "bank": {
+        "title": "広範な質問銀行",
+        "desc": "自己紹介、動機付け、行動シナリオ、IT特有のトピックをカバーする何百もの実際の面接質問。"
+      },
+      "ai": {
+        "title": "AIモック インタビュアー",
+        "desc": "テキストまたは音声で回答を練習します。明確さ、敬語の丁寧さ、関連性に関する即座のAIフィードバックを受け取ります。"
+      },
+      "coding": {
+        "title": "ITコーディング実践",
+        "desc": "アルゴリズムと実践的なタスクを特徴とする組み込みコーディング環境で技術評価に備えます。"
+      },
+      "materials": {
+        "title": "学習教材",
+        "desc": "日本の面接文化、ビジネスエチケット、敬語をマスターするためのキュレーション記事、ガイド、リソース。"
+      },
+      "bilingual": {
+        "title": "バイリンガル コンテンツ",
+        "desc": "すべての質問とサンプル回答は、日本語と英語の両方で利用できるため、翻訳で何も失われません。"
+      },
+      "community": {
+        "title": "活発なコミュニティ",
+        "desc": "経験を共有し、戦略について議論し、日本の有名なテック企業で面接を受けたピアから学ぶ。"
+      },
+      "learnMore": "詳しく知る"
+    },
+    "categories": {
+      "title": "人気のカテゴリ",
+      "subtitle": "トピック別にグループ化された実際の面接質問を閲覧します。",
+      "questionsCount": "質問",
+      "browseAll": "すべてのカテゴリを閲覧"
+    },
+    "materialsSection": {
+      "title": "注目の学習教材",
+      "subtitle": "準備を加速するためのキュレーション リソース。",
+      "exploreAll": "すべての教材を探索",
+      "videoGuide": "ビデオガイド",
+      "article": "記事"
+    },
+    "stats": {
+      "title": "プラットフォーム一目瞭然",
+      "subtitle": "私たちのプラットフォームからの実数 - 推測なし、誇張なし。"
+    },
+    "why": {
+      "badge": "日本行きのIT専門家向けに構築された",
+      "title": "MensetsuProが異なる理由",
+      "desc": "ほとんどの面接対策プラットフォームは西側市場に焦点を当てています。MensetsuProは、敬語のビジネス言語から有名企業で使用される構造化グループディスカッション形式まで、日本のIT採用のユニークな世界のためにゼロから構築されました。",
+      "points": [
+        "実際の日本のIT企業面接からの面接質問",
+        "日本の正式性とトーン（敬語）に合わせたAIフィードバック",
+        "日本の面接形式で整理されたカテゴリ",
+        "バイリンガルサポート - プラットフォーム全体で英語と日本語",
+        "同じ企業で面接を受けたピアのコミュニティ"
+      ]
+    },
+    "cta": {
+      "badge": "今日、日本のIT職キャリアを始めよう",
+      "title": "日本でのキャリアの夢を実現する準備はできていますか？",
+      "subtitle": "MensetsuProに参加し、実際の質問、AIコーチング、同じ道を歩んだコミュニティで練習を開始します。",
+      "createAccount": "無料アカウントを作成",
+      "browseQuestions": "質問を閲覧",
+      "noCard": "クレジット カードは不要です。今すぐ練習を開始します。"
+    }
+  },
+  "dashboard": {
+    "sidebar": {
+      "title": "ダッシュボード",
+      "overview": "概要",
+      "profile": "マイ プロフィール",
+      "coding": "解決されたコード質問",
+      "questions": "保存された質問",
+      "interviews": "モック インタビュー",
+      "articles": "私の記事",
+      "materials": "保存された教材",
+      "settings": "設定"
+    },
+    "settings": {
+      "title": "アカウント設定",
+      "subtitle": "プラットフォームの設定とセキュリティを管理します。",
+      "appearance": {
+        "title": "外観",
+        "desc": "MensetsuProのルックアンドフィールをカスタマイズします。",
+        "theme": "カラーテーマ",
+        "themeDesc": "ライト モードとダーク モードを切り替えます。",
+        "language": "言語設定",
+        "languageDesc": "サイト全体のインターフェース言語を変更します。"
+      },
+      "notifications": {
+        "title": "通知",
+        "desc": "MensetsuProがあなたに連絡する方法を制御します。",
+        "marketing": "マーケティング メール",
+        "marketingDesc": "新しい機能、記事、面接のコツに関するメールを受け取ります。",
+        "community": "コミュニティ更新",
+        "communityDesc": "他のユーザーがあなたのスレッドに返信したときに通知を受け取ります。"
+      },
+      "dangerZone": {
+        "title": "危険ゾーン",
+        "desc": "アカウントと関連するすべてのデータを完全に削除します。このアクションは取り消せません。",
+        "delete": "アカウントを削除"
+      },
+      "save": "設定を保存"
+    }
+  },
+  "questions": {
+    "title": "面接質問銀行",
+    "subtitle": "日本企業が尋ねる繰り返しの質問をマスターします。",
+    "search": "質問を検索...",
+    "allCategories": "すべてのカテゴリ",
+    "filter": "フィルター",
+    "noQuestions": "質問が見つかりません。",
+    "save": "保存",
+    "saved": "保存済み",
+    "viewAnswer": "回答を見る",
+    "recommended": "おすすめの回答",
+    "sample": "サンプル回答",
+    "badSample": "悪いサンプル回答",
+    "tips": "ヒント",
+    "difficulty": "難易度"
+  },
+  "materials": {
+    "title": "学習教材",
+    "subtitle": "あなたの成功のためのキュレーション リソース。"
+  },
+  "ai": {
+    "title": "AIインタビュー",
+    "subtitle": "練習セッションを構成して開始します。"
+  },
+  "community": {
+    "title": "コミュニティ ディスカッション",
+    "subtitle": "他の人から学び、あなたの経験を共有します。",
+    "newPost": {
+      "title": "新しいディスカッションを開始",
+      "type": "投稿タイプ",
+      "category": "カテゴリ",
+      "selectCategory": "カテゴリを選択",
+      "language": "投稿言語",
+      "languageDesc": "翻訳の精度を高めるために、コンテンツの主要言語を特定してください。",
+      "postTitle": "タイトル",
+      "placeholderTitle": "望むディスカッションの結果を要約します",
+      "details": "ディスカッションの詳細",
+      "submit": "ディスカッションを投稿"
+    },
+    "search": "投稿を検索...",
+    "trending": "トレンド",
+    "latest": "最新",
+    "unanswered": "未回答",
+    "translate": "私の言語に翻訳",
+    "showOriginal": "元の言語を表示",
+    "translatedByAI": "AIによって自動翻訳",
+    "originalLanguage": "元の言語",
+    "noPosts": "ディスカッションが見つかりません。"
+  },
+  "auth": {
+    "login": {
+      "title": "おかえりなさい",
+      "subtitle": "アカウントにサインインします。",
+      "email": "メール アドレス",
+      "password": "パスワード",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "button": "サインイン",
+      "noAccount": "アカウントをお持ちではありませんか？",
+      "signUp": "サインアップ"
+    },
+    "register": {
+      "title": "アカウントを作成",
+      "subtitle": "MensetsuProであなたの旅を始めます。",
+      "name": "フルネーム",
+      "email": "メール アドレス",
+      "password": "パスワード",
+      "button": "サインアップ",
+      "hasAccount": "既にアカウントをお持ちですか？",
+      "logIn": "ログイン"
+    },
+    "errors": {
+      "database": "データベースは現在利用できません。後でもう一度お試しください。",
+      "invalidCredentials": "無効なメール またはパスワード",
+      "registrationFailed": "登録に失敗しました",
+      "generic": "予期しないエラーが発生しました。もう一度お試しください。"
+    }
+  },
+  "common": {
+    "save": "保存",
+    "delete": "削除",
+    "cancel": "キャンセル",
+    "submit": "送信",
+    "loading": "読み込み中...",
+    "theme": "テーマ",
+    "lightMode": "ライト モード",
+    "darkMode": "ダーク モード",
+    "language": "言語",
+    "next": "次へ",
+    "back": "戻る",
+    "error": "エラー",
+    "success": "成功"
+  },
+  "admin": {
+    "title": "管理パネル",
+    "nav": {
+      "overview": "概要",
+      "users": "ユーザー",
+      "questions": "質問",
+      "codingTest": "コーディング テスト",
+      "categories": "カテゴリ",
+      "materials": "教材",
+      "moderation": "モデレーション"
+    },
+    "dashboard": {
+      "title": "管理ダッシュボード",
+      "subtitle": "プラットフォーム全体、最近のアクティビティ、モデレーション センシティブ コンテンツを 1 か所から監視します。",
+      "contentHealth": "コンテンツの状態",
+      "topCategories": "トップ カテゴリ",
+      "adminActions": "管理者アクション",
+      "recentUsers": "最近のユーザー",
+      "recentDiscussions": "最近のディスカッション",
+      "recentBlogs": "最近のブログ",
+      "noCategoryActivity": "カテゴリ アクティビティはまだありません。",
+      "items": "アイテム",
+      "comments": "コメント",
+      "published": "公開済み",
+      "draft": "ドラフト",
+      "stats": {
+        "users": "ユーザー",
+        "questionBank": "質問銀行",
+        "community": "コミュニティ",
+        "platformActivity": "プラットフォーム アクティビティ",
+        "admins": "管理者",
+        "materials": "教材",
+        "comments": "コメント",
+        "reactions": "リアクション"
+      },
+      "actions": {
+        "manageUsers": "ユーザーを管理",
+        "manageQuestions": "質問銀行を管理",
+        "manageCoding": "コーディング テストを管理",
+        "manageMaterials": "教材を管理",
+        "moderate": "ブログとコミュニティをモデレート",
+        "goToModeration": "モデレーションに移動"
+      },
+      "contentTypes": {
+        "publishedBlogs": "公開されたブログ投稿",
+        "totalBlogs": "ブログ投稿の合計",
+        "questions": "質問",
+        "materials": "教材",
+        "codingTasks": "コーディング ロジック タスク"
+      }
+    },
+    "users": {
+      "title": "ユーザーを管理",
+      "subtitle": "アカウントを作成し、管理者を昇進させ、サイト全体でユーザーを削除します。",
+      "createUser": "ユーザーを作成",
+      "allUsers": "すべてのユーザー",
+      "fields": {
+        "name": "名前",
+        "email": "メール",
+        "password": "パスワード",
+        "role": "ロール",
+        "targetRole": "対象ロール",
+        "japaneseLevel": "日本語レベル"
+      },
+      "placeholders": {
+        "fullName": "フルネーム",
+        "email": "name@example.com",
+        "tempPassword": "一時パスワード",
+        "frontendEngineer": "フロントエンド エンジニア"
+      },
+      "roles": {
+        "user": "ユーザー",
+        "admin": "管理者"
+      },
+      "jlpt": {
+        "notSet": "未設定",
+        "noJlptSet": "JLPT が設定されていません"
+      },
+      "table": {
+        "name": "名前",
+        "email": "メール",
+        "role": "ロール",
+        "profile": "プロフィール",
+        "activity": "アクティビティ",
+        "joined": "参加日",
+        "actions": "アクション",
+        "threads": "スレッド",
+        "comments": "コメント",
+        "blogs": "ブログ",
+        "interviews": "インタビュー",
+        "noUsersFound": "ユーザーが見つかりません。"
+      }
+    },
+    "questions": {
+      "title": "質問銀行",
+      "subtitle": "サイト全体で面接質問を追加および削除します。",
+      "addQuestion": "質問を追加",
+      "allQuestions": "すべての質問",
+      "fields": {
+        "title": "タイトル",
+        "titleEn": "英語翻訳",
+        "category": "カテゴリ",
+        "difficulty": "難易度",
+        "recommendedAnswer": "おすすめの回答構造",
+        "sampleAnswer": "サンプル回答",
+        "badSampleAnswer": "悪いサンプル回答（間違いの例）",
+        "tips": "ヒント",
+        "commonMistakes": "一般的な間違い",
+        "evaluationCriteria": "評価基準"
+      },
+      "placeholders": {
+        "title": "あなた自身について教えてください",
+        "titleEn": "自己紹介してください",
+        "difficulty": "初級、中級、上級",
+        "recommendedAnswer": "ユーザーが回答を構成する方法を説明します...",
+        "badSampleAnswer": "オプション: やってはいけなことの例",
+        "evaluationCriteria": "AIが回答を評価するための基準（例：問題、アクション、結果を述べる必要があります）",
+        "selectCategory": "カテゴリを選択"
+      },
+      "table": {
+        "title": "タイトル",
+        "category": "カテゴリ",
+        "difficulty": "難易度",
+        "saves": "セーブ",
+        "added": "追加済み",
+        "actions": "アクション",
+        "noQuestionsFound": "質問が見つかりません。",
+        "noEnglishTranslation": "英語翻訳がありません"
+      }
+    },
+    "materials": {
+      "title": "学習教材",
+      "subtitle": "キュレーション リソースを追加、更新、フィーチャ、削除します。",
+      "addMaterial": "教材を追加",
+      "allMaterials": "すべての教材",
+      "fields": {
+        "title": "タイトル",
+        "type": "タイプ",
+        "category": "カテゴリ",
+        "url": "URL",
+        "difficulty": "難易度",
+        "description": "説明",
+        "isFeatured": "公開教材ページでこの教材をフィーチャー",
+        "featuredShort": "フィーチャー",
+        "views": "表示"
+      },
+      "types": {
+        "article": "記事",
+        "video": "ビデオ",
+        "book": "書籍"
+      },
+      "placeholders": {
+        "title": "日本のIT面接をマスターする",
+        "url": "https://example.com/resource",
+        "difficulty": "初級、中級、上級",
+        "selectCategory": "カテゴリを選択"
+      },
+      "noMaterialsFound": "教材が見つかりません。"
+    },
+    "moderation": {
+      "title": "モデレーションとサイト コンテンツ",
+      "subtitle": "コミュニティ アクティビティ、コメント、ブログ公開を 1 か所から確認します。",
+      "discussions": {
+        "title": "最近のディスカッション",
+        "table": {
+          "thread": "スレッド",
+          "author": "作成者",
+          "category": "カテゴリ",
+          "engagement": "エンゲージメント",
+          "status": "ステータス",
+          "actions": "アクション",
+          "comments": "コメント",
+          "reactions": "リアクション",
+          "noDiscussions": "ディスカッションが見つかりません。"
+        }
+      },
+      "comments": {
+        "title": "最近のコメント",
+        "table": {
+          "comment": "コメント",
+          "author": "作成者",
+          "thread": "スレッド",
+          "bestAnswer": "ベストアンサー",
+          "actions": "アクション",
+          "yes": "はい",
+          "no": "いいえ",
+          "noComments": "コメントが見つかりません。"
+        }
+      },
+      "blog": {
+        "title": "ブログ公開",
+        "table": {
+          "title": "タイトル",
+          "author": "作成者",
+          "status": "ステータス",
+          "created": "作成日",
+          "actions": "アクション",
+          "published": "公開済み",
+          "draft": "ドラフト",
+          "publish": "公開",
+          "unpublish": "非公開",
+          "noPosts": "ブログ投稿が見つかりません。"
+        }
+      }
+    },
+    "categories": {
+      "title": "カテゴリ",
+      "subtitle": "質問、教材、コミュニティ スレッド全体で使用される分類法を管理します。",
+      "addCategory": "カテゴリを追加",
+      "allCategories": "すべてのカテゴリ",
+      "fields": {
+        "name": "名前",
+        "description": "説明",
+        "questions": "質問",
+        "materials": "教材",
+        "threads": "スレッド"
+      },
+      "placeholders": {
+        "name": "行動",
+        "description": "このカテゴリの用途"
+      },
+      "noCategoriesFound": "カテゴリが見つかりません。"
+    },
+    "coding": {
+      "title": "コーディング テスト銀行",
+      "subtitle": "コード評価器のアルゴリズムおよびロジック質問を管理します。",
+      "addChallenge": "新しいコーディング チャレンジを追加",
+      "addDescription": "ユーザーの回答を自動的に評価するために、基本的なパラメータとJSONテストケースを入力します。",
+      "allChallenges": "既存のコーディング質問",
+      "fields": {
+        "title": "タイトル",
+        "difficulty": "難易度",
+        "category": "カテゴリ",
+        "description": "問題ステートメント / 説明",
+        "initialCode": "初期コード設定（オプション）",
+        "testCases": "テストケース（厳密なJSON配列）",
+        "testCasesHint": "形式: [{\"input\": [[配列または標準引数]], \"expectedOutput\": \"期待される回答\"}]",
+        "dateAdded": "追加日"
+      },
+      "placeholders": {
+        "title": "例：最大部分配列を見つける",
+        "selectCategory": "カテゴリを選択...",
+        "description": "コンテキストと期待値を説明します...",
+        "initialCode": "function solve(args) {\n  // Your code here\n}"
+      },
+      "difficulties": {
+        "Beginner": "初級",
+        "Intermediate": "中級",
+        "Advanced": "上級"
+      },
+      "messages": {
+        "createSuccess": "質問が完璧に追加されました！",
+        "deleteConfirm": "このコーディング質問を削除してもよろしいですか？",
+        "deleteSuccess": "正常に削除されました",
+        "deleteError": "削除に失敗しました",
+        "submissionFailed": "送信に失敗しました",
+        "dbError": "データベース エラー: 有効なカテゴリを選択していることを確認してください。詳細についてはコンソールを確認してください。",
+        "validationError": "検証エラーのため、質問を作成できませんでした。",
+        "loading": "読み込み中...",
+        "noQuestions": "コーディング質問が見つかりません。"
+      },
+      "buttons": {
+        "create": "チャレンジを作成"
+      }
+    }
+  }
+}

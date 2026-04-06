@@ -1,0 +1,510 @@
+{
+  "nav": {
+    "questionBank": "Savollar banki",
+    "materials": "O'quv materiallari",
+    "aiInterviewer": "AI Intervyuer",
+    "community": "Hamjamiyat",
+    "faq": "FAQ",
+    "dashboard": "Boshqaruv paneli",
+    "accountMenu": "Akkaunt",
+    "adminPanel": "Admin paneli",
+    "signOut": "Chiqish",
+    "logIn": "Kirish",
+    "signUpFree": "Ro'yxatdan o'tish"
+  },
+  "footer": {
+    "tagline": "Yaponiyada IT sohasida ishga tayyorlanish uchun premium platforma. Orzuingizdagi ishga ishonch bilan kiring.",
+    "features": "Imkoniyatlar",
+    "company": "Kompaniya",
+    "aboutUs": "Biz haqimizda",
+    "blog": "Blog",
+    "contact": "Aloqa",
+    "privacyPolicy": "Maxfiylik siyosati",
+    "termsOfService": "Foydalanish shartlari",
+    "newsletterTitle": "Yangiliklardan xabardor bo'ling",
+    "newsletterSubtitle": "Oxirgi intervyu maslahatlari va platforma yangilanishlarini oling.",
+    "newsletterPlaceholder": "Email manzilingiz",
+    "newsletterButton": "Obuna bo'lish",
+    "copyright": "Barcha huquqlar himoyalangan.",
+    "inspiredBy": "JDU tomonidan ilhomlangan",
+    "builtFor": "Yaponiya IT karyerasi uchun yaratilgan"
+  },
+  "home": {
+    "heroBadge": "Yaponiya IT intervyusi uchun №1 tayyorgarlik platformasi",
+    "heroTitle": "Yaponiya suhbatlariga",
+    "heroTitleAccent": "ishonch bilan tayyorlaning",
+    "heroSubtitle": "Yaponiyada IT karyerasini maqsad qilgan talabalar va ish qidiruvchilar uchun premium platforma. Haqiqiy savollarni o'rganing, AI bilan mashq qiling va kodlash mahoratingizni oshiring.",
+    "startNow": "Mashq qilishni boshlang",
+    "tryAI": "AI Intervyuerni sinab ko'ring",
+    "heroStats": {
+      "users": "ro'yxatdan o'tgan foydalanuvchilar",
+      "questions": "intervyu savollari",
+      "coding": "kodlash topshiriqlari"
+    },
+    "features": {
+      "badge": "To'liq tayyorgarlik platformasi",
+      "title": "Muvaffaqiyat uchun barcha zarur vositalar",
+      "subtitle": "Yaponiya korporativ suhbatlarining o'ziga xos jihatlari uchun maxsus ishlab chiqilgan keng qamrovli vositalar.",
+      "bank": {
+        "title": "Keng ko'lamli savollar banki",
+        "desc": "O'zini tanishtirish, motivatsiya, xulq-atvor ssenariylari va ITga oid yuzlab haqiqiy savollar."
+      },
+      "ai": {
+        "title": "AI Mock-intervyuer",
+        "desc": "Javoblaringizni matn yoki ovoz orqali mashq qiling. AI orqali aniqlik, Keigo xushmuomalaligi va mazmun haqida tezkor fikrlar oling."
+      },
+      "coding": {
+        "title": "IT kodlash amaliyoti",
+        "desc": "Algoritmlar va amaliy vazifalarni o'z ichiga olgan o'rnatilgan kodlash muhitida texnik testlarga tayyorlaning."
+      },
+      "materials": {
+        "title": "O'quv materiallari",
+        "desc": "Yaponiya intervyu madaniyati, biznes etiketi va Keigoni o'rganish uchun maqolalar va qo'llanmalar."
+      },
+      "bilingual": {
+        "title": "Ikki tillik kontent",
+        "desc": "Barcha savollar va namunaviy javoblar ham yapon, ham ingliz tillarida mavjud."
+      },
+      "community": {
+        "title": "Faol hamjamiyat",
+        "desc": "Tajribangizni ulashing, strategiyalarni muhokama qiling va Yaponiyaning top IT kompaniyalarida intervyu topshirganlardan o'rganing."
+      },
+      "learnMore": "Batafsil"
+    },
+    "categories": {
+      "title": "Ommabop kategoriyalar",
+      "subtitle": "Mavzular bo'yicha guruhlangan haqiqiy intervyu savollarini ko'ring.",
+      "questionsCount": "t.",
+      "browseAll": "Barcha kategoriyalarni ko'rish"
+    },
+    "materialsSection": {
+      "title": "Tavsiya etilgan o'quv materiallari",
+      "subtitle": "Tayyorgarligingizni tezlashtirish uchun saralangan manbalar.",
+      "exploreAll": "Barcha materiallarni ko'rish",
+      "videoGuide": "Video qo'llanma",
+      "article": "Maqola"
+    },
+    "stats": {
+      "title": "Platforma raqamlarda",
+      "subtitle": "Faqat haqiqiy raqamlar — mubolag'asiz va aniq."
+    },
+    "why": {
+      "badge": "Yaponiya IT mutaxassislari uchun yaratilgan",
+      "title": "Nega MensetsuPro boshqalardan farq qiladi",
+      "desc": "Aksariyat platformalar G'arb bozoriga qaratilgan. MensetsuPro yapon IT ishga yollash jarayonlari — Keigo tilidan tortib, top firmalardagi guruhli muhokamalargacha hisobga olib yaratilgan.",
+      "points": [
+        "Haqiqiy yapon IT kompaniyalari intervyu savollari",
+        "Yapon xushmuomalaligi (Keigo) uchun sozlangan AI fikrlari",
+        "Yaponiya intervyu formatiga muvofiq tashkil etilgan kategoriyalar",
+        "Ingliz va yapon tillarida to'liq qo'llab-quvvatlash",
+        "Siz topshirgan kompaniyalarda suhbatdan o'tganlar hamjamiyati"
+      ]
+    },
+    "cta": {
+      "badge": "Bugundan Yaponiya IT karyerangizni boshlang",
+      "title": "Yaponiyada orzuingizdagi ishga kirishga tayyormisiz?",
+      "subtitle": "MensetsuPro-ga qo'shiling va haqiqiy savollar va hamjamiyat yordami bilan mashq qilishni boshlang.",
+      "createAccount": "Bepul hisob yaratish",
+      "browseQuestions": "Savollarni ko'rish",
+      "noCard": "Kredit karta talab qilinmaydi. Hoziroq boshlang."
+    }
+  },
+  "dashboard": {
+    "sidebar": {
+      "title": "Panel",
+      "overview": "Umumiy ko'rinish",
+      "profile": "Profilim",
+      "coding": "Yechilgan masalalar",
+      "questions": "Saqlangan savollar",
+      "interviews": "Mock intervyular",
+      "articles": "Maqolalarim",
+      "materials": "Saqlangan materiallar",
+      "settings": "Sozlamalar"
+    },
+    "settings": {
+      "title": "Hisob sozlamalari",
+      "subtitle": "Platforma afzalliklari va xavfsizlikni boshqaring.",
+      "appearance": {
+        "title": "Tashqi ko'rinish",
+        "desc": "MensetsuPro ko'rinishini sozlang.",
+        "theme": "Ranglar mavzusi",
+        "themeDesc": "Ochiq va qorong'u rejimlar o'rtasida almashish.",
+        "language": "Til sozlamalari",
+        "languageDesc": "Sayt interfeysi tilini o'zgartirish."
+      },
+      "notifications": {
+        "title": "Bildirishnomalar",
+        "desc": "MensetsuPro siz bilan qanday bog'lanishini boshqaring.",
+        "marketing": "Marketing maqsadidagi xatlar",
+        "marketingDesc": "Yangi xususiyatlar va maslahatlar haqida xat oling.",
+        "community": "Hamjamiyat yangiliklari",
+        "communityDesc": "Sizning mavzularingizga javob bo'lganda bildirishnoma oling."
+      },
+      "dangerZone": {
+        "title": "Xavfli zona",
+        "desc": "Hisob va barcha ma'lumotlarni butunlay o'chirish. Bu amalni qaytarib bo'lmaydi.",
+        "delete": "Hisobni o'chirish"
+      },
+      "save": "Sozlamalarni saqlash"
+    }
+  },
+  "questions": {
+    "title": "Suhbat savollari banki",
+    "subtitle": "Yapon kompaniyalarida so'raladigan savollarni o'rganing.",
+    "search": "Savollarni qidirish...",
+    "allCategories": "Barcha kategoriyalar",
+    "filter": "Filtr",
+    "noQuestions": "Savollar topilmadi.",
+    "save": "Saqlash",
+    "saved": "Saqlandi",
+    "viewAnswer": "Javobni ko'rish",
+    "recommended": "Tavsiya etilgan javob",
+    "sample": "Namunaviy javob",
+    "badSample": "Noto'g'ri namuna",
+    "tips": "Maslahatlar",
+    "difficulty": "Qiyinchilik darajasi"
+  },
+  "materials": {
+    "title": "O'quv materiallari",
+    "subtitle": "Muvaffaqiyat uchun saralangan manbalar."
+  },
+  "ai": {
+    "title": "AI Intervyu",
+    "subtitle": "Tayyorgarlik seansini sozlang va boshlang."
+  },
+  "community": {
+    "title": "Muhokamalar",
+    "subtitle": "Boshqalardan o'rganing va tajribangiz bilan bo'lishing.",
+    "newPost": {
+      "title": "Yangi muhokama boshlash",
+      "type": "Post turi",
+      "category": "Kategoriya",
+      "selectCategory": "Kategoriyani tanlang",
+      "language": "Post tili",
+      "languageDesc": "Tarjima aniqligini oshirish uchun kontentingiz asosiy tilini ko'rsating.",
+      "postTitle": "Sarlavha",
+      "placeholderTitle": "Muhokama natijasini qisqacha bayon qiling",
+      "details": "Muhokama tafsilotlari",
+      "submit": "Muhokamani nashr qilish"
+    },
+    "search": "Postlarni qidirish...",
+    "trending": "Trenddagilar",
+    "latest": "Oxirgilari",
+    "unanswered": "Javobsizlar",
+    "translate": "Mening tilimga tarjima qilish",
+    "showOriginal": "Aslini ko'rsatish",
+    "translatedByAI": "AI orqali avto-tarjima",
+    "originalLanguage": "Asl tili",
+    "noPosts": "Muhokamalar topilmadi."
+  },
+  "auth": {
+    "login": {
+      "title": "Xush kelibsiz",
+      "subtitle": "Hisobingizga kiring.",
+      "email": "Email manzil",
+      "password": "Parol",
+      "forgotPassword": "Parolni unutdingizmi?",
+      "button": "Kirish",
+      "noAccount": "Hisobingiz yo'qmi?",
+      "signUp": "Ro'yxatdan o'tish"
+    },
+    "register": {
+      "title": "Hisob yaratish",
+      "subtitle": "MensetsuPro bilan karyerangizni boshlang.",
+      "name": "To'liq ism",
+      "email": "Email manzil",
+      "password": "Parol",
+      "button": "Ro'yxatdan o'tish",
+      "hasAccount": "Hisobingiz bormi?",
+      "logIn": "Kirish"
+    },
+    "errors": {
+      "database": "Ma'lumotlar bazasi vaqtinchalik ishlamayapti. Iltimos, keyinroq urinib ko'ring.",
+      "invalidCredentials": "Email yoki parol noto'g'ri.",
+      "registrationFailed": "Ro'yxatdan o'tish amalga oshmadi.",
+      "generic": "Kutilmagan xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring."
+    }
+  },
+  "common": {
+    "save": "Saqlash",
+    "delete": "O'chirish",
+    "cancel": "Bekor qilish",
+    "submit": "Yuborish",
+    "loading": "Yuklanmoqda...",
+    "theme": "Mavzu",
+    "lightMode": "Yorug' rejim",
+    "darkMode": "Qorong'i rejim",
+    "language": "Til",
+    "next": "Keyingisi",
+    "back": "Orqaga",
+    "error": "Xato",
+    "success": "Muvaffaqiyat"
+  },
+  "admin": {
+    "title": "Admin paneli",
+    "nav": {
+      "overview": "Umumiy ko'rinish",
+      "users": "Foydalanuvchilar",
+      "questions": "Savollar",
+      "codingTest": "Kodlash testi",
+      "categories": "Kategoriyalar",
+      "materials": "Materiallar",
+      "moderation": "Moderatsiya"
+    },
+    "dashboard": {
+      "title": "Admin boshqaruvi",
+      "subtitle": "Butun platformani, so'nggi faollikni va moderatsiya talab qiladigan kontentni bir joydan nazorat qiling.",
+      "contentHealth": "Kontent holati",
+      "topCategories": "Top kategoriyalar",
+      "adminActions": "Admin amallari",
+      "recentUsers": "Yangi foydalanuvchilar",
+      "recentDiscussions": "So'nggi muhokamalar",
+      "recentBlogs": "So'nggi bloglar",
+      "noCategoryActivity": "Kategoriyalar bo'yicha faollik yo'q.",
+      "items": "elementlar",
+      "comments": "sharhlar",
+      "published": "Nashr qilingan",
+      "draft": "Qoralama",
+      "stats": {
+        "users": "Foydalanuvchilar",
+        "questionBank": "Savollar banki",
+        "community": "Hamjamiyat",
+        "platformActivity": "Faollik",
+        "admins": "adminlar",
+        "materials": "materiallar",
+        "comments": "sharhlar",
+        "reactions": "reaksiyalar"
+      },
+      "actions": {
+        "manageUsers": "Foydalanuvchilarni boshqarish",
+        "manageQuestions": "Savollar bankini boshqarish",
+        "manageCoding": "Kodlash testlarini boshqarish",
+        "manageMaterials": "Materiallarni boshqarish",
+        "moderate": "Blog va hamjamiyatni moderatsiya qilish",
+        "goToModeration": "Moderatsiyaga o'tish"
+      },
+      "contentTypes": {
+        "publishedBlogs": "Nashr qilingan bloglar",
+        "totalBlogs": "Jami bloglar",
+        "questions": "Savollar",
+        "materials": "Materiallar",
+        "codingTasks": "Mantiqiy topshiriqlar"
+      }
+    },
+    "users": {
+      "title": "Foydalanuvchilarni boshqarish",
+      "subtitle": "Hisoblar yarating, adminlarni tayinlang va foydalanuvchilarni o'chiring.",
+      "createUser": "Foydalanuvchi yaratish",
+      "allUsers": "Barcha foydalanuvchilar",
+      "fields": {
+        "name": "Ism",
+        "email": "Email",
+        "password": "Parol",
+        "role": "Rol",
+        "targetRole": "Maqsadli lavozim",
+        "japaneseLevel": "Yapon tili darajasi"
+      },
+      "placeholders": {
+        "fullName": "To'liq ism",
+        "email": "name@example.com",
+        "tempPassword": "Vaqtinchalik parol",
+        "frontendEngineer": "Frontend muhandisi"
+      },
+      "roles": {
+        "user": "Foydalanuvchi",
+        "admin": "Admin"
+      },
+      "jlpt": {
+        "notSet": "O'rnatilmagan",
+        "noJlptSet": "JLPT belgilanmagan"
+      },
+      "table": {
+        "name": "Ism",
+        "email": "Email",
+        "role": "Rol",
+        "profile": "Profil",
+        "activity": "Faollik",
+        "joined": "Ro'yxatdan o'tgan",
+        "actions": "Amallar",
+        "threads": "mavzu",
+        "comments": "sharh",
+        "blogs": "blog",
+        "interviews": "intervyu",
+        "noUsersFound": "Foydalanuvchilar topilmadi."
+      }
+    },
+    "questions": {
+      "title": "Savollar banki",
+      "subtitle": "Intervyu savollarini qo'shish va o'chirish.",
+      "addQuestion": "Savol qo'shish",
+      "allQuestions": "Barcha savollar",
+      "fields": {
+        "title": "Sarlavha (JP)",
+        "titleEn": "Inglizcha tarjimasi",
+        "category": "Kategoriya",
+        "difficulty": "Qiyinchilik darajasi",
+        "recommendedAnswer": "Tavsiya etilgan javob tuzilmasi",
+        "sampleAnswer": "Javob namunasi",
+        "badSampleAnswer": "Yomon namuna (Xato misol)",
+        "tips": "Maslahatlar",
+        "commonMistakes": "Keng tarqalgan xatolar",
+        "evaluationCriteria": "Baholash mezonlari"
+      },
+      "placeholders": {
+        "title": "O'zingiz haqingizda gapirib bering",
+        "titleEn": "Please introduce yourself",
+        "difficulty": "Boshlang'ich, O'rta, Yuqori",
+        "recommendedAnswer": "Foydalanuvchi javobini qanday tuzishi kerakligini tushuntiring...",
+        "badSampleAnswer": "Ixtiyoriy: Nima demaslik kerakligi haqida misol",
+        "evaluationCriteria": "AI baholash mezonlari (masalan: muammo, harakat, natijani aytishi kerak)",
+        "selectCategory": "Kategoriyani tanlang"
+      },
+      "table": {
+        "title": "Sarlavha",
+        "category": "Kategoriya",
+        "difficulty": "Qiyinchilik",
+        "saves": "Saqlashlar",
+        "added": "Qo'shilgan sana",
+        "actions": "Amallar",
+        "noQuestionsFound": "Savollar topilmadi.",
+        "noEnglishTranslation": "Inglizcha tarjimasi yo'q"
+      }
+    },
+    "materials": {
+      "title": "O'quv materiallari",
+      "subtitle": "Saralangan resurslarni qo'shing, yangilang, asosiy qilib belgilang va o'chiring.",
+      "addMaterial": "Material qo'shish",
+      "allMaterials": "Barcha materiallar",
+      "fields": {
+        "title": "Sarlavha",
+        "type": "Turi",
+        "category": "Kategoriya",
+        "url": "URL",
+        "difficulty": "Qiyinchilik",
+        "description": "Tavsif",
+        "isFeatured": "Ushbu materialni ochiq materiallar sahifasida asosiy qilib ko'rsatish",
+        "featuredShort": "Asosiy",
+        "views": "ko'rishlar"
+      },
+      "types": {
+        "article": "Maqola",
+        "video": "Video",
+        "book": "Kitob"
+      },
+      "placeholders": {
+        "title": "Yaponiyadagi IT intervyularini o'zlashtirish",
+        "url": "https://example.com/resource",
+        "difficulty": "Boshlang'ich, O'rta, Yuqori",
+        "selectCategory": "Kategoriyani tanlang"
+      },
+      "noMaterialsFound": "Materiallar topilmadi."
+    },
+    "moderation": {
+      "title": "Moderatsiya va sayt tarkibi",
+      "subtitle": "Hamjamiyat faolligi, sharhlar va blog nashrlarini bir joydan ko'rib chiqing.",
+      "discussions": {
+        "title": "So'nggi muhokamalar",
+        "table": {
+          "thread": "Mavzu",
+          "author": "Muallif",
+          "category": "Kategoriya",
+          "engagement": "Faollik",
+          "status": "Holat",
+          "actions": "Amallar",
+          "comments": "sharhlar",
+          "reactions": "reaksiyalar",
+          "noDiscussions": "Muhokamalar topilmadi."
+        }
+      },
+      "comments": {
+        "title": "So'nggi sharhlar",
+        "table": {
+          "comment": "Sharh",
+          "author": "Muallif",
+          "thread": "Mavzu",
+          "bestAnswer": "Eng yaxshi javob",
+          "actions": "Amallar",
+          "yes": "Ha",
+          "no": "Yo'q",
+          "noComments": "Sharhlar topilmadi."
+        }
+      },
+      "blog": {
+        "title": "Blog nashr qilish",
+        "table": {
+          "title": "Sarlavha",
+          "author": "Muallif",
+          "status": "Holat",
+          "created": "Yaratilgan",
+          "actions": "Amallar",
+          "published": "Nashr qilingan",
+          "draft": "Qoralama",
+          "publish": "Nashr qilish",
+          "unpublish": "Nashrdan olib tashlash",
+          "noPosts": "Bloglar topilmadi."
+        }
+      }
+    },
+    "categories": {
+      "title": "Kategoriyalar",
+      "subtitle": "Savollar, materiallar va jamoat mavzularida qo'llaniladigan taksonomiyani boshqarish.",
+      "addCategory": "Kategoriya qo'shish",
+      "allCategories": "Barcha kategoriyalar",
+      "fields": {
+        "name": "Nomi",
+        "description": "Tavsif",
+        "questions": "savollar",
+        "materials": "materiallar",
+        "threads": "mavzular"
+      },
+      "placeholders": {
+        "name": "Xulq-atvor",
+        "description": "Ushbu kategoriya nima uchun ishlatiladi"
+      },
+      "noCategoriesFound": "Kategoriyalar topilmadi."
+    },
+    "coding": {
+      "title": "Kodlash testi banki",
+      "subtitle": "Bloklar evalyuatori uchun algoritmlar va mantiqiy savollarni boshqarish.",
+      "addChallenge": "Yangi topshiriq qo'shish",
+      "addDescription": "Foydalanuvchi javoblarini avtomatik baholash uchun asosiy parametrlar va JSON formatidagi test holatlarini kiriting.",
+      "allChallenges": "Mavjud kodlash topshiriqlari",
+      "fields": {
+        "title": "Sarlavha",
+        "difficulty": "Qiyinchilik",
+        "category": "Kategoriya",
+        "description": "Muammo bayoni / Tavsif",
+        "initialCode": "Boshlang'ich kodni sozlash (Ixtiyoriy)",
+        "testCases": "Test holatlari (Qat'iy JSON massiv)",
+        "testCasesHint": "Format: [{\"input\": [[massiv yoki standart arglar]], \"expectedOutput\": \"kutilgan javob\"}]",
+        "dateAdded": "Qo'shilgan sana"
+      },
+      "placeholders": {
+        "title": "masalan: Eng katta qismsmassivni topish",
+        "selectCategory": "Kategoriyani tanlang...",
+        "description": "Kontekst va kutilgan natijalarni tushuntiring...",
+        "initialCode": "function solve(args) {\n  // Kodni shu yerga yozing\n}"
+      },
+      "difficulties": {
+        "Beginner": "Boshlang'ich",
+        "Intermediate": "O'rta",
+        "Advanced": "Yuqori"
+      },
+      "messages": {
+        "createSuccess": "Savol muvaffaqiyatli qo'shildi!",
+        "deleteConfirm": "Ushbu kodlash savolini o'chirishga ishonchingiz komilmi?",
+        "deleteSuccess": "Muvaffaqiyatli o'chirildi",
+        "deleteError": "O'chirishda xatolik",
+        "submissionFailed": "Yuborishda xatolik",
+        "dbError": "Ma'lumotlar bazasi xatosi: To'g'ri kategoriya tanlanganiga ishonch hosil qiling. Tafsilotlar uchun konsolni tekshiring.",
+        "validationError": "Validatsiya xatosi tufayli savol yaratilmadi.",
+        "loading": "Yuklanmoqda...",
+        "noQuestions": "Kodlash savollari topilmadi."
+      },
+      "buttons": {
+        "create": "Topshiriq yaratish"
+      }
+    }
+  }
+}
+

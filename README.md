@@ -1,5 +1,22 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment Setup
+
+Create a local `.env` file before starting the app.
+
+```bash
+DATABASE_URL="postgresql://postgres.<project-ref>:<password>@aws-<region>.pooler.supabase.com:5432/postgres"
+DIRECT_URL="postgresql://postgres:<password>@db.<project-ref>.supabase.co:5432/postgres"
+NEXTAUTH_SECRET="<replace-me>"
+NEXTAUTH_URL="http://localhost:3000"
+```
+
+Notes:
+
+- `DATABASE_URL` should be the runtime connection string used by the app.
+- `DIRECT_URL` is optional but recommended for local development. This project prefers `DIRECT_URL` in development when it is present, which helps when a provider's pooler URL is unavailable locally.
+- If the app shows a database unavailable message, run `npm run db:check` to verify the configured URLs from this machine.
+
 ## Getting Started
 
 First, run the development server:
