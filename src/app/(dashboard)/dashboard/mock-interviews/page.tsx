@@ -60,7 +60,12 @@ export default async function MockInterviewsPage() {
   const copy = mockInterviewCopy[locale];
 
   const interviews = await prisma.mockInterview.findMany({
-    where: { userId: session.user.id },
+    where: {
+      userId: session.user.id,
+      score: {
+        not: null,
+      },
+    },
     orderBy: { completedAt: "desc" },
     include: { logs: true }
   });
@@ -99,7 +104,7 @@ export default async function MockInterviewsPage() {
                 <Badge variant="outline" className="bg-blue-50 text-blue-700 hover:bg-blue-100">
                   {localizeDifficulty(locale, interview.difficulty)}
                 </Badge>
-                {interview.score && (
+                {interview.score !== null && (
                   <Badge variant={interview.score >= 80 ? "default" : interview.score >= 60 ? "secondary" : "destructive"}>
                     {interview.score}/100
                   </Badge>

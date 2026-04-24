@@ -3,6 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import { AlertCircle, Palette, Globe, Bell } from "lucide-react";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
 import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
@@ -61,18 +62,14 @@ export default function SettingsPage() {
               <Label className="text-base font-semibold">{t('dashboard.settings.notifications.marketing')}</Label>
               <p className="text-sm text-muted-foreground">{t('dashboard.settings.notifications.marketingDesc')}</p>
             </div>
-            <div className="flex items-center space-x-2">
-               <input type="checkbox" className="h-5 w-5 rounded border-border text-primary" defaultChecked />
-            </div>
+            <Switch defaultChecked />
           </div>
           <div className="flex items-center justify-between pt-6 border-t border-border/50">
             <div className="space-y-0.5">
               <Label className="text-base font-semibold">{t('dashboard.settings.notifications.community')}</Label>
               <p className="text-sm text-muted-foreground">{t('dashboard.settings.notifications.communityDesc')}</p>
             </div>
-            <div className="flex items-center space-x-2">
-               <input type="checkbox" className="h-5 w-5 rounded border-border text-primary" defaultChecked />
-            </div>
+            <Switch defaultChecked />
           </div>
         </CardContent>
         <CardFooter className="bg-muted/20 border-t px-6 py-4 justify-end">

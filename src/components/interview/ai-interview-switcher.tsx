@@ -26,7 +26,7 @@ const switcherCopy: Record<Locale, { mock: string; coding: string }> = {
   },
 };
 
-export default function AIInterviewSwitcher() {
+export default function AIInterviewSwitcher({ resumeSessionId = null }: { resumeSessionId?: string | null }) {
   const [mode, setMode] = useState<"mock" | "coding">("mock");
   const { locale } = useTranslation();
   const copy = switcherCopy[locale];
@@ -40,7 +40,7 @@ export default function AIInterviewSwitcher() {
             onClick={() => setMode("mock")}
             className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all ${
               mode === "mock"
-                ? "bg-card text-teal-700 shadow-sm"
+                ? "bg-card text-primary shadow-sm"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -51,7 +51,7 @@ export default function AIInterviewSwitcher() {
             onClick={() => setMode("coding")}
             className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all ${
               mode === "coding"
-                ? "bg-card text-sky-700 shadow-sm"
+                ? "bg-card text-primary shadow-sm"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -61,7 +61,7 @@ export default function AIInterviewSwitcher() {
         </div>
       </div>
 
-      {mode === "mock" ? <AIInterviewWorkspace /> : <AICodingWorkspace />}
+      {mode === "mock" ? <AIInterviewWorkspace resumeSessionId={resumeSessionId} /> : <AICodingWorkspace />}
     </div>
   );
 }

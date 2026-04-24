@@ -63,10 +63,10 @@ export function Navbar() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#1e3a8a] font-bold text-white text-sm">
+            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary font-bold text-primary-foreground text-sm">
               M
             </div>
-            <span className="text-xl font-bold tracking-tight text-[#1e3a8a] dark:text-blue-400">
+            <span className="text-xl font-bold tracking-tight text-primary dark:text-blue-400">
               MensetsuPro
             </span>
           </Link>
@@ -77,7 +77,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="hover:text-[#1e3a8a] dark:hover:text-blue-400 transition-colors"
+                className="hover:text-primary dark:hover:text-blue-400 transition-colors"
               >
                 {t(link.key)}
               </Link>

@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import { HomeContent } from "@/components/home/HomeContent";
+import { isLikelyDatabaseError } from "@/lib/db-error";
 
 // Fetch real stats from the database
 async function getPlatformStats() {
@@ -42,11 +43,32 @@ async function getFeaturedMaterials() {
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [stats, categories, materials] = await Promise.all([
-    getPlatformStats(),
-    getTopCategories(),
-    getFeaturedMaterials(),
-  ]);
+  try {
+    const [stats, categories, materials] = await Promise.all([
+      getPlatformStats(),
+      getTopCategories(),
+      getFeaturedMaterials(),
+    ]);
 
-  return <HomeContent stats={stats} categories={categories} materials={materials} />;
+    return <HomeContent stats={stats} categories={categories} materials={materials} />;
+  } catch (error) {
+    if (!isLikelyDatabaseError(error)) {
+      throw error;
+    }
+
+    return (
+      <HomeContent
+        stats={{
+          totalQuestions: 0,
+          totalMaterials: 0,
+          totalUsers: 0,
+          totalDiscussions: 0,
+          totalCodingQuestions: 0,
+          totalInterviews: 0,
+        }}
+        categories={[]}
+        materials={[]}
+      />
+    );
+  }
 }

@@ -1,106 +1,114 @@
 import { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress, ProgressIndicator, ProgressTrack } from "@/components/ui/progress";
-import { Separator } from "@/components/ui/separator";
-import { AlertCircle, ArrowLeft, CheckCircle2, ChevronRight, MessageSquare, Star, Target } from "lucide-react";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { notFound, redirect } from "next/navigation";
+import { ArrowLeft, CheckCircle2, ChevronRight, CircleAlert, Star, Target } from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress, ProgressIndicator, ProgressTrack } from "@/components/ui/progress";
+import { authOptions } from "@/lib/auth";
+import { buildConversationTranscript, buildSummary, getPromptView, parseInterviewSessionState } from "@/lib/interview";
+import prisma from "@/lib/prisma";
 
 export const metadata: Metadata = {
   title: "Interview Results | MensetsuPro",
-  description: "Detailed AI feedback for your mock interview session.",
+  description: "Detailed AI feedback for your saved mock interview session.",
 };
 
-export default function AIInterviewResultsPage() {
-  const score = 78;
-  const metrics = [
-    { label: "Clarity", value: 85, color: "bg-emerald-500" },
-    { label: "Grammar & Vocab", value: 70, color: "bg-amber-500" },
-    { label: "Relevance", value: 90, color: "bg-emerald-500" },
-    { label: "Politeness (Keigo)", value: 65, color: "bg-rose-500" },
-    { label: "Confidence", value: 80, color: "bg-emerald-500" }
-  ];
+const metricColors = {
+  Clarity: "bg-emerald-500",
+  Confidence: "bg-sky-500",
+  Relevance: "bg-teal-500",
+  Grammar: "bg-amber-500",
+  Politeness: "bg-rose-500",
+} as const;
+
+export default async function AIInterviewResultsPage({ params }: { params: Promise<{ id: string }> }) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.id) redirect("/login");
+
+  const { id } = await params;
+  const interview = await prisma.mockInterview.findUnique({
+    where: { id },
+    include: { logs: true },
+  });
+
+  if (!interview || interview.userId !== session.user.id) {
+    notFound();
+  }
+
+  const state = parseInterviewSessionState(interview.feedbackJson);
+  if (!state) {
+    notFound();
+  }
+
+  const summary = state.summary ?? buildSummary(state.history, 0);
+  const conversation = buildConversationTranscript(state);
 
   return (
-    <div className="container mx-auto px-4 py-8 md:py-12 max-w-5xl">
-      
-      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-        <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
-        <ChevronRight className="w-4 h-4" />
-        <Link href="/dashboard" className="hover:text-foreground transition-colors">Mock Interviews</Link>
-        <ChevronRight className="w-4 h-4" />
-        <span className="text-foreground font-medium">Session Results</span>
+    <div className="container mx-auto max-w-6xl px-4 py-8 md:py-12">
+      <div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
+        <Link href="/dashboard" className="hover:text-foreground">Dashboard</Link>
+        <ChevronRight className="size-4" />
+        <Link href="/dashboard/mock-interviews" className="hover:text-foreground">Mock Interviews</Link>
+        <ChevronRight className="size-4" />
+        <span className="font-medium text-foreground">Session Results</span>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-end mb-8">
+      <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground tracking-tight flex items-center gap-3">
+          <h1 className="flex items-center gap-3 text-3xl font-bold tracking-tight text-foreground">
             Interview Feedback
-            <Badge variant="secondary" className="bg-emerald-100 text-emerald-800 text-sm px-2.5 py-0.5 mt-1">Completed</Badge>
+            <Badge variant="secondary">Completed</Badge>
           </h1>
-          <p className="text-muted-foreground mt-2">Target Role: Frontend Engineer • Difficulty: Intermediate</p>
+          <p className="mt-2 text-muted-foreground">Target Role: {interview.jobRole} • Difficulty: {interview.difficulty}</p>
         </div>
-        <div className="flex gap-3 mt-4 md:mt-0">
-          <Link href="/dashboard" className="inline-flex items-center justify-center rounded-[min(var(--radius-md),10px)] border border-border bg-card hover:bg-muted hover:text-foreground h-9 px-4 text-sm font-medium">
-            <ArrowLeft className="w-4 h-4 mr-2" /> Back to Dashboard
+        <div className="flex gap-3">
+          <Link href="/dashboard/mock-interviews" className="inline-flex h-9 items-center justify-center rounded-lg border border-border bg-card px-4 text-sm font-medium hover:bg-muted">
+            <ArrowLeft className="mr-2 size-4" /> Back to History
           </Link>
-          <Link href="/ai-interview" className="inline-flex items-center justify-center rounded-[min(var(--radius-md),10px)] bg-[#1e3a8a] text-white hover:bg-[#1e40af] h-9 px-4 text-sm font-medium">
+          <Link href="/ai-interview" className="inline-flex h-9 items-center justify-center rounded-lg bg-teal-700 px-4 text-sm font-medium text-white hover:bg-teal-800">
             Practice Again
           </Link>
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-8">
-        
-        {/* Left Column - Score Overview */}
-        <div className="lg:col-span-1 flex flex-col gap-6">
-          <Card className="border-border shadow-sm overflow-hidden relative">
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-emerald-400 to-[#1e3a8a]"></div>
-            <CardHeader className="text-center pt-8 pb-2">
-              <CardTitle className="text-lg text-muted-foreground font-medium">Overall Score</CardTitle>
+      <div className="grid gap-8 lg:grid-cols-3">
+        <div className="space-y-6">
+          <Card>
+            <CardHeader className="text-center">
+              <CardTitle className="text-lg text-muted-foreground">Overall Score</CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col items-center pb-8">
-              <div className="relative flex items-center justify-center w-32 h-32 my-4">
-                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="45" fill="none" stroke="#f1f5f9" strokeWidth="8" />
-                  <circle 
-                    cx="50" cy="50" r="45" 
-                    fill="none" 
-                    stroke="#1e3a8a" 
-                    strokeWidth="8" 
-                    strokeDasharray={`${(score / 100) * 283} 283`}
-                    strokeLinecap="round"
-                    className="transition-all duration-1000 ease-out"
-                  />
+            <CardContent className="flex flex-col items-center">
+              <div className="relative my-4 flex size-32 items-center justify-center">
+                <svg className="size-full -rotate-90" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="#e2e8f0" strokeWidth="8" />
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="#0f766e" strokeWidth="8" strokeDasharray={`${(summary.overall / 100) * 283} 283`} strokeLinecap="round" />
                 </svg>
-                <div className="absolute flex flex-col items-center">
-                  <span className="text-4xl font-extrabold text-foreground">{score}</span>
-                  <span className="text-sm text-muted-foreground font-medium">/ 100</span>
+                <div className="absolute text-center">
+                  <div className="text-4xl font-bold text-foreground">{summary.overall}</div>
+                  <div className="text-sm text-muted-foreground">/ 100</div>
                 </div>
               </div>
-              <p className="text-base font-semibold text-card-foreground mt-2">Good, but has room to grow.</p>
-              <p className="text-sm text-muted-foreground text-center mt-2 px-4">Your technical answers are solid, but you need to improve your formal Keigo usage.</p>
+              <p className="text-center text-sm text-muted-foreground">{summary.summaryText}</p>
             </CardContent>
           </Card>
 
-          <Card className="border-border">
+          <Card>
             <CardHeader>
-              <CardTitle className="text-base flex items-center gap-2">
-                <Target className="w-4 h-4 text-[#ea580c]" />
-                Detailed Metrics
-              </CardTitle>
+              <CardTitle className="flex items-center gap-2 text-base"><Target className="size-4 text-orange-600" />Average Metrics</CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col gap-5">
-              {metrics.map((metric, i) => (
-                <div key={i} className="flex flex-col gap-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="font-medium text-card-foreground">{metric.label}</span>
-                    <span className="text-muted-foreground">{metric.value}%</span>
+            <CardContent className="space-y-4">
+              {Object.entries(summary.averages).map(([label, value]) => (
+                <div key={label} className="space-y-2">
+                  <div className="flex items-center justify-between text-sm">
+                    <span>{label}</span>
+                    <span>{value}</span>
                   </div>
-                  <Progress value={metric.value} className="h-2">
-                    <ProgressTrack>
-                      <ProgressIndicator className={metric.color} />
+                  <Progress value={value}>
+                    <ProgressTrack className="h-2 rounded-full bg-slate-200">
+                      <ProgressIndicator className={metricColors[label as keyof typeof metricColors]} />
                     </ProgressTrack>
                   </Progress>
                 </div>
@@ -109,60 +117,70 @@ export default function AIInterviewResultsPage() {
           </Card>
         </div>
 
-        {/* Right Column - Question Breakdown */}
-        <div className="lg:col-span-2 flex flex-col gap-6">
-          <Card className="border-border">
-            <CardHeader className="bg-background border-b border-border/50">
-              <CardTitle className="text-lg">Question by Question Breakdown</CardTitle>
-              <CardDescription>Review exactly what you said and how to improve.</CardDescription>
+        <div className="space-y-6 lg:col-span-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>Interview Chat</CardTitle>
+              <CardDescription>Saved Gemini conversation for this session.</CardDescription>
             </CardHeader>
-            <CardContent className="p-0">
-              
-              {/* Question Item */}
-              <div className="p-6 border-b border-border/50 last:border-0">
-                <div className="flex justify-between mb-4">
-                  <h3 className="font-bold text-foreground text-lg">Q1: 自己紹介をお願いします。</h3>
-                  <Badge variant="outline" className="border-emerald-200 bg-emerald-50 text-emerald-700">85/100</Badge>
+            <CardContent className="space-y-3">
+              {conversation.length === 0 ? (
+                <div className="rounded-xl border border-dashed border-border bg-muted/20 p-4 text-sm text-muted-foreground">
+                  No chat transcript is available for this session.
                 </div>
-                
-                <div className="bg-background p-4 rounded-lg border border-border relative mb-6">
-                  <span className="absolute -top-3 left-4 bg-card px-2 text-xs font-bold text-muted-foreground uppercase tracking-wider">Your Answer</span>
-                  <p className="text-sm leading-relaxed text-card-foreground">初めまして、〇〇です。現在〇〇大学で情報工学を専攻しています。Reactを用いたチーム開発の経験があり、UI/UXの改善に貢献しました。本日はよろしくお願いします。</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-emerald-50/50 p-4 rounded-lg border border-emerald-100">
-                    <h4 className="flex items-center gap-2 font-semibold text-emerald-800 text-sm mb-2">
-                      <CheckCircle2 className="w-4 h-4" /> What you did well
-                    </h4>
-                    <p className="text-sm text-emerald-700">
-                      Clear and concise structure. You effectively highlighted your technical stack (React) and the impact of your work (UI/UX improvement).
-                    </p>
+              ) : (
+                conversation.map((message, index) => (
+                  <div key={`${message.role}-${message.createdAt}-${index}`} className={`flex ${message.role === "assistant" ? "justify-start" : "justify-end"}`}>
+                    <div className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-6 ${message.role === "assistant" ? "border border-teal-100 bg-teal-50 text-slate-900" : "bg-slate-950 text-white"}`}>
+                      <div className={`mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${message.role === "assistant" ? "text-teal-700" : "text-slate-300"}`}>
+                        {message.role === "assistant" ? "Interviewer" : "You"}
+                      </div>
+                      <p className="whitespace-pre-line">{message.content}</p>
+                    </div>
                   </div>
-                  
-                  <div className="bg-amber-50/50 p-4 rounded-lg border border-amber-100">
-                    <h4 className="flex items-center gap-2 font-semibold text-amber-800 text-sm mb-2">
-                      <AlertCircle className="w-4 h-4" /> Area for improvement
-                    </h4>
-                    <p className="text-sm text-amber-700">
-                      "〇〇です" should be "〇〇と申します" in a formal interview setting. Politeness level (Keigo) needs to be upgraded.
-                    </p>
+                ))
+              )}
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Question by Question Breakdown</CardTitle>
+              <CardDescription>Saved answers and feedback from this interview session.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {state.history.map((entry, index) => (
+                <div key={`${entry.question.id}-${entry.questionIndex}`} className="space-y-4 rounded-2xl border border-border p-5">
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="text-lg font-semibold text-foreground">Q{index + 1}: {getPromptView(entry.question, state.config.language).primary}</h3>
+                    <Badge variant="outline">{entry.feedback.overall}/100</Badge>
+                  </div>
+
+                  <div className="rounded-xl border border-border bg-muted/20 p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Your Answer</div>
+                    <p className="mt-2 whitespace-pre-line text-sm leading-6 text-card-foreground">{entry.answer || "Question skipped."}</p>
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="rounded-xl border border-emerald-100 bg-emerald-50/70 p-4">
+                      <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-emerald-800"><CheckCircle2 className="size-4" />Strengths</div>
+                      <div className="space-y-2 text-sm text-emerald-700">{entry.feedback.strengths.map((item) => <p key={item}>{item}</p>)}</div>
+                    </div>
+                    <div className="rounded-xl border border-amber-100 bg-amber-50/70 p-4">
+                      <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-amber-800"><CircleAlert className="size-4" />Areas to Improve</div>
+                      <div className="space-y-2 text-sm text-amber-700">{entry.feedback.weakPoints.map((item) => <p key={item}>{item}</p>)}</div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-xl border border-border bg-background p-4">
+                    <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-foreground"><Star className="size-4 text-amber-500" />AI Suggested Alternative</div>
+                    <p className="whitespace-pre-line text-sm leading-6 text-card-foreground">{entry.feedback.betterSampleAnswer}</p>
                   </div>
                 </div>
-
-                <div className="mt-6 pt-6 border-t border-border/50">
-                  <h4 className="flex items-center gap-2 font-semibold text-foreground text-sm mb-3">
-                    <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                    AI Suggested Alternative
-                  </h4>
-                  <p className="bg-blue-50/50 p-4 rounded-lg border border-blue-100 text-sm text-blue-900 leading-relaxed italic">「初めまして、〇〇と申します。現在〇〇大学で情報工学を専攻しており、主にフロントエンド開発について学んでいます。これまでにReactを用いたチーム開発の経験があり、UI/UXの改善に貢献しました。本日はよろしくお願いいたします。」</p>
-                </div>
-              </div>
-
+              ))}
             </CardContent>
           </Card>
         </div>
-        
       </div>
     </div>
   );

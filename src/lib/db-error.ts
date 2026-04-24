@@ -27,6 +27,8 @@ const DATABASE_CONFIGURATION_ERROR_PATTERNS = [
   /the provided database string is invalid/i,
   /invalid port number/i,
   /invalid connection string/i,
+  /tenant or user not found/i,
+  /password authentication failed/i,
 ];
 
 function toDatabaseErrorCandidate(error: unknown): DatabaseErrorCandidate | null {

@@ -257,6 +257,18 @@ export default async function DashboardPage() {
       blogPosts: {
         take: 3,
         orderBy: { updatedAt: "desc" },
+      },
+      mockInterviews: {
+        take: 2,
+        where: {
+          score: {
+            not: null,
+          },
+        },
+        orderBy: { completedAt: "desc" },
+        include: {
+          logs: true,
+        },
       }
     }
   });
@@ -265,10 +277,19 @@ export default async function DashboardPage() {
     redirect("/login");
   }
 
+  const completedInterviewCount = await prisma.mockInterview.count({
+    where: {
+      userId: session.user.id,
+      score: {
+        not: null,
+      },
+    },
+  });
+
   // Calculate readiness score (mocked logic or based on stats)
   const readinessScore = Math.min(
     100,
-    (user._count.mockInterviews * 20) +
+    (completedInterviewCount * 20) +
       (user._count.savedQuestions * 5) +
       (user._count.savedMaterials * 4) +
       (user._count.blogPosts * 6) +
@@ -278,7 +299,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12 max-w-6xl">
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col md:flex-row gap-8"> 
         
         {/* Left Sidebar: Profile Card */}
         <div className="w-full md:w-1/3 lg:w-1/4">
@@ -330,7 +351,7 @@ export default async function DashboardPage() {
 
                 <div className="grid grid-cols-2 gap-4 pt-4">
                   <div className="flex flex-col">
-                    <span className="text-2xl font-bold text-foreground">{user._count.mockInterviews}</span>
+                    <span className="text-2xl font-bold text-foreground">{completedInterviewCount}</span>
                     <span className="text-xs text-muted-foreground">{t("dashboard.sidebar.interviews")}</span>
                   </div>
                   <div className="flex flex-col">
@@ -443,7 +464,7 @@ export default async function DashboardPage() {
                     <CardTitle className="text-lg">Frontend Engineering Interview</CardTitle>
                     <CardDescription className="text-muted-foreground mt-1">Mid-level difficulty â€¢ 5 questions â€¢ 12 mins</CardDescription>
                     <div className="mt-4">
-                      <Link href="/ai-interview/results/1" className="inline-flex items-center justify-center rounded-lg bg-muted text-foreground hover:bg-slate-200/80 h-8 px-3 text-xs font-medium">
+                      <Link href="/dashboard/mock-interviews" className="inline-flex items-center justify-center rounded-lg bg-muted text-foreground hover:bg-slate-200/80 h-8 px-3 text-xs font-medium">
                         {copy.viewDetailedFeedback}
                       </Link>
                     </div>
@@ -459,7 +480,7 @@ export default async function DashboardPage() {
                     <CardTitle className="text-lg">General Behavioral Interview</CardTitle>
                     <CardDescription className="text-muted-foreground mt-1">Entry-level difficulty â€¢ 3 questions â€¢ 8 mins</CardDescription>
                     <div className="mt-4">
-                      <Link href="/ai-interview/results/2" className="inline-flex items-center justify-center rounded-lg border border-border bg-card hover:bg-muted hover:text-foreground h-8 px-3 text-xs font-medium">
+                      <Link href="/dashboard/mock-interviews" className="inline-flex items-center justify-center rounded-lg border border-border bg-card hover:bg-muted hover:text-foreground h-8 px-3 text-xs font-medium">
                         {copy.viewDetailedFeedback}
                       </Link>
                     </div>

@@ -43,68 +43,86 @@ export default function CodingEditor({ params }: { params: Promise<{ id: string 
     : "Algorithm challenge prompt goes here.";
 
   return (
-    <div className="flex h-[calc(100vh-64px)] w-full overflow-hidden bg-foreground text-slate-300">
-      {/* Problem Description Panel */}
-      <div className="w-1/3 bg-slate-800 border-r border-slate-700 flex flex-col hidden md:flex">
-        <div className="p-6 border-b border-slate-700 bg-slate-800/50">
-          <h2 className="text-xl font-bold text-white capitalize">{id.replace(/-/g, " ")}</h2>
+    <div className="flex flex-col h-[calc(100vh-64px)] w-full overflow-hidden bg-background">
+      {/* Header with title and actions */}
+      <div className="h-16 border-b border-border bg-card flex items-center justify-between px-6 shrink-0">
+        <div className="flex items-center gap-4">
+          <h2 className="text-lg font-bold text-foreground capitalize">{id.replace(/-/g, " ")}</h2>
+          <span className="text-sm text-muted-foreground">JavaScript</span>
         </div>
-        <div className="p-6 flex-1 overflow-y-auto prose prose-invert">
-          <p className="text-slate-300 leading-relaxed max-w-none">
-            {problemText}
-          </p>
-          <div className="mt-8 bg-foreground p-4 rounded-md font-mono text-sm border border-slate-700">
-            <span className="text-muted-foreground">// Example 1:</span><br/>
-            <span className="text-blue-400">Input:</span> nums = [2,7,11,15], target = 9<br/>
-            <span className="text-emerald-400">Output:</span> [0,1]
-          </div>
+        <div className="flex gap-2">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={() => setCode("function solve() {\n\n}\n")}
+            className="rounded-lg"
+          >
+            <RefreshCw className="w-4 h-4 mr-2" /> Reset
+          </Button>
+          <Button 
+            size="sm" 
+            onClick={runCode} 
+            disabled={isRunning}
+            className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg"
+          >
+            {isRunning ? <RefreshCw className="w-4 h-4 mr-2 animate-spin" /> : <Play className="w-4 h-4 mr-2" />}
+            Run Code
+          </Button>
+          <Button 
+            size="sm" 
+            className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg" 
+            disabled
+          >
+            Submit <CheckCircle2 className="w-4 h-4 ml-2" />
+          </Button>
         </div>
       </div>
 
-      {/* Editor & Terminal Panel */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden">
-        {/* Editor Actions */}
-        <div className="h-14 bg-[#1e1e1e] border-b border-slate-800 flex items-center justify-between px-4 shrink-0">
-          <div className="flex gap-2 text-sm text-muted-foreground font-mono">
-            <span className="bg-slate-800 px-3 py-1 rounded text-slate-200">javascript</span>
+      <div className="flex flex-1 overflow-hidden gap-0">
+        {/* Problem Description Panel - Hidden on mobile */}
+        <div className="w-1/3 bg-muted border-r border-border flex-col hidden lg:flex overflow-hidden">
+          <div className="p-4 border-b border-border bg-muted/50 shrink-0">
+            <h3 className="font-semibold text-foreground">Problem Description</h3>
           </div>
-          <div className="flex gap-2">
-            <Button variant="secondary" size="sm" onClick={() => setCode("function solve() {\n\n}\n")} className="bg-slate-800 text-slate-300 hover:bg-slate-700 border-none">
-               <RefreshCw className="w-4 h-4 mr-2" /> Reset
-            </Button>
-            <Button size="sm" onClick={runCode} disabled={isRunning} className="bg-emerald-600 hover:bg-emerald-700 text-white border-none">
-              {isRunning ? <RefreshCw className="w-4 h-4 mr-2 animate-spin" /> : <Play className="w-4 h-4 mr-2" />}
-              Run Code
-            </Button>
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white border-none" disabled>
-               Submit <CheckCircle2 className="w-4 h-4 ml-2" />
-            </Button>
+          <div className="p-4 flex-1 overflow-y-auto flex flex-col gap-4">
+            <p className="text-sm text-foreground leading-relaxed">
+              {problemText}
+            </p>
+            <div className="bg-card p-3 rounded-lg border border-border font-mono text-xs text-muted-foreground space-y-1">
+              <p className="text-muted-foreground">// Example 1:</p>
+              <p><span className="text-blue-500">Input:</span> nums = [2,7,11,15], target = 9</p>
+              <p><span className="text-green-500">Output:</span> [0,1]</p>
+            </div>
           </div>
         </div>
 
-        {/* Text Area Code Editor */}
-        <div className="flex-1 bg-[#1e1e1e] p-4 relative">
-          <textarea
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            className="w-full h-full bg-transparent text-slate-300 font-mono text-sm resize-none focus:outline-none leading-relaxed"
-            spellCheck="false"
-          />
-        </div>
-
-        {/* Terminal Output */}
-        <div className="h-1/3 bg-[#0d0d0d] border-t border-slate-800 flex flex-col shrink-0">
-          <div className="px-4 py-2 bg-[#1e1e1e] border-b border-slate-800 text-xs font-mono text-muted-foreground uppercase flex items-center tracking-wider">
-            Terminal Output
+        {/* Editor & Output Panel */}
+        <div className="flex-1 flex flex-col overflow-hidden">
+          {/* Code Editor */}
+          <div className="flex-1 bg-[#1e1e1e] p-4 relative overflow-hidden">
+            <textarea
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              className="w-full h-full bg-transparent text-slate-300 font-mono text-sm resize-none focus:outline-none leading-relaxed"
+              spellCheck="false"
+              placeholder="function solve() {&#10;  // Write your solution here&#10;}"
+            />
           </div>
-          <div className="flex-1 p-4 overflow-y-auto font-mono text-sm">
-            {output ? (
-              <pre className={output.startsWith("Error:") ? "text-rose-400" : "text-emerald-400"}>
-                {output}
-              </pre>
-            ) : (
-              <div className="text-muted-foreground italic">Click 'Run Code' to see console output here...</div>
-            )}
+
+          {/* Terminal Output Panel */}
+          <div className="h-1/3 bg-[#0d0d0d] border-t border-slate-800 flex flex-col shrink-0 overflow-hidden">
+            <div className="px-4 py-2 bg-[#1e1e1e] border-b border-slate-800 text-xs font-mono text-muted-foreground uppercase flex items-center tracking-wider shrink-0">
+              Terminal Output
+            </div>
+            <div className="flex-1 p-4 overflow-y-auto font-mono text-sm">
+              {output ? (
+                <pre className={output.startsWith("Error:") ? "text-rose-400" : "text-emerald-400"}>
+                  {output}
+                </pre>
+              ) : (
+                <div className="text-muted-foreground italic">Click 'Run Code' to see console output here...</div>
+              )}
+            </div>
           </div>
         </div>
       </div>
