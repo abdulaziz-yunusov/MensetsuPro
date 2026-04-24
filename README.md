@@ -55,4 +55,3 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 =======
 # MensetsuPro
 This project is designed to help people prepare for interviews 
->>>>>>> 0c0caf120d1c44a0f1995dc18976bbca78cf21e4

@@ -258,14 +258,20 @@ export default function AIInterviewWorkspace({ resumeSessionId = null }: { resum
   }
 
   return (
-    <div className="container mx-auto max-w-6xl space-y-6 px-4 py-8 md:py-12">
+    <div className="container mx-auto max-w-[1400px] space-y-6 px-4 py-8 md:py-12">
+      {/* ── PAGE HEADER ── */}
       <div className="space-y-2">
         <Badge className="bg-teal-700 text-white hover:bg-teal-700">{copy.title}</Badge>
         <p className="text-sm text-muted-foreground">{copy.subtitle}</p>
       </div>
 
-      {sessionError ? <div className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">{sessionError}</div> : null}
+      {sessionError ? (
+        <div className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">{sessionError}</div>
+      ) : null}
 
+      {/* ══════════════════════════════════════════
+          SETUP SCREEN
+      ══════════════════════════════════════════ */}
       {screen === "setup" ? (
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <Card>
@@ -332,68 +338,137 @@ export default function AIInterviewWorkspace({ resumeSessionId = null }: { resum
         </div>
       ) : null}
 
+      {/* ══════════════════════════════════════════
+          SESSION SCREEN — redesigned 3-panel layout
+      ══════════════════════════════════════════ */}
       {screen === "session" && activeQuestion ? (
-        <div className="grid gap-6 xl:grid-cols-[1.45fr_0.8fr]">
-          <Card className="overflow-hidden border-border/70 bg-background shadow-xl shadow-slate-200/50">
-            <CardHeader className="border-b border-border/60 bg-[linear-gradient(135deg,rgba(15,118,110,0.08),rgba(15,23,42,0.02))]">
-              <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
-                <div className="max-w-2xl">
-                  <Badge className="bg-teal-700 text-white hover:bg-teal-700">Live interview</Badge>
-                  <CardTitle className="mt-3 flex items-center gap-2 text-2xl">
-                    <MessageSquareText className="size-5 text-teal-700" />
-                    Conversation-first interview workspace
-                  </CardTitle>
-                  <CardDescription className="mt-2 text-sm leading-6">
-                    Stay focused on the chat. The interviewer response, current judgment, and next question all come from the live AI turn.
-                  </CardDescription>
-                </div>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <SessionMiniStat label="Question" value={`${currentIndex + 1} / ${plannedQuestionCount}`} />
-                  <SessionMiniStat label="Elapsed" value={formatDuration(elapsedSeconds)} />
+        <div className="overflow-hidden rounded-2xl border border-border/70 bg-background shadow-xl shadow-slate-200/60">
+
+          {/* ── TOP SESSION BAR ── */}
+          <div className="flex items-center justify-between gap-4 bg-gradient-to-r from-slate-950 via-teal-950 to-slate-950 px-5 py-3">
+            <div className="flex min-w-0 items-center gap-3">
+              <Badge className="shrink-0 bg-teal-500 text-white hover:bg-teal-500">Live interview</Badge>
+              <MessageSquareText className="size-4 shrink-0 text-teal-400" />
+              <span className="truncate text-sm font-semibold text-white">{config.jobRole}</span>
+              <span className="hidden text-slate-600 sm:block">·</span>
+              <span className="hidden text-xs text-slate-400 sm:block">
+                {interviewCategories.find((i) => i.value === config.category)?.label ?? "—"}
+              </span>
+              <span className="hidden text-slate-600 lg:block">·</span>
+              <span className="hidden text-xs text-slate-500 lg:block">
+                {interviewDifficulties.find((i) => i.value === config.difficulty)?.label ?? "—"}
+              </span>
+            </div>
+            <div className="flex shrink-0 items-center gap-5">
+              <div className="text-right">
+                <div className="text-[10px] uppercase tracking-widest text-slate-500">Elapsed</div>
+                <div className="font-mono text-sm font-semibold text-white">{formatDuration(elapsedSeconds)}</div>
+              </div>
+              <div className="text-right">
+                <div className="text-[10px] uppercase tracking-widest text-slate-500">Question</div>
+                <div className="text-sm font-bold text-white">
+                  {currentIndex + 1}<span className="font-normal text-slate-500"> / {plannedQuestionCount}</span>
                 </div>
               </div>
-            </CardHeader>
+            </div>
+          </div>
 
-            <CardContent className="space-y-0 p-0">
-              <div className="border-b border-border/60 bg-muted/20 px-6 py-4">
-                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-                      <Target className="size-4 text-teal-700" />
-                      Current question
-                    </div>
-                    <p className="text-base font-semibold leading-7 text-foreground">{getPromptView(activeQuestion, config.language).primary}</p>
-                    <p className="text-sm text-muted-foreground">{getPromptView(activeQuestion, config.language).secondary}</p>
-                  </div>
-                  <div className="min-w-[220px] rounded-2xl border border-teal-100 bg-teal-50/80 p-4">
-                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-700">Answer guide</div>
-                    <div className="mt-2 text-sm leading-6 text-slate-700">
-                      Conclusion first, one concrete example, then the result.
-                    </div>
-                  </div>
+          {/* ── PROGRESS BAR ── */}
+          <div className="h-[3px] bg-slate-800">
+            <div
+              className="h-full bg-teal-500 transition-all duration-700 ease-out"
+              style={{ width: `${progressValue}%` }}
+            />
+          </div>
+
+          {/* ── THREE-PANEL BODY ── */}
+          <div className="grid xl:grid-cols-[260px_1fr_360px] xl:divide-x xl:divide-border/60" style={{ minHeight: "700px" }}>
+
+            {/* ── LEFT PANEL: Current question + session info ── */}
+            <div className="flex flex-col gap-5 border-b border-border/60 bg-slate-50/70 p-5 xl:border-b-0">
+
+              {/* Current question */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Target className="size-3.5 text-teal-700" />
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-teal-700">Current question</span>
                 </div>
-                {config.showLiveHints ? (
-                  <div className="mt-4 rounded-2xl border border-dashed border-teal-200 bg-background/80 px-4 py-3 text-sm text-muted-foreground">
-                    <span className="font-medium text-foreground">Hint:</span> {activeQuestion.hint}
-                  </div>
+                <p className="text-sm font-semibold leading-6 text-foreground">
+                  {getPromptView(activeQuestion, config.language).primary}
+                </p>
+                {getPromptView(activeQuestion, config.language).secondary ? (
+                  <p className="text-xs leading-5 text-muted-foreground">
+                    {getPromptView(activeQuestion, config.language).secondary}
+                  </p>
                 ) : null}
               </div>
 
-              <div ref={conversationViewportRef} className="min-h-[440px] max-h-[620px] space-y-4 overflow-y-auto bg-[linear-gradient(180deg,rgba(248,250,252,0.85),rgba(255,255,255,1))] px-6 py-6">
+              {/* Answer guide */}
+              <div className="rounded-xl border border-teal-100 bg-teal-50 p-3">
+                <div className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-teal-700">Answer guide</div>
+                <p className="text-xs leading-5 text-slate-700">
+                  Conclusion first, one concrete example, then the result.
+                </p>
+              </div>
+
+              {/* Hint */}
+              {config.showLiveHints ? (
+                <div className="rounded-xl border border-dashed border-amber-200 bg-amber-50/60 p-3 text-xs text-muted-foreground">
+                  <span className="font-semibold text-amber-700">Hint: </span>
+                  {activeQuestion.hint}
+                </div>
+              ) : null}
+
+              {/* Divider + session metadata */}
+              <div className="mt-auto space-y-2.5 border-t border-border/60 pt-4">
+                <div className="mb-3 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Session info</div>
+                <PreviewRow label="Role" value={config.jobRole} />
+                <PreviewRow label="Category" value={interviewCategories.find((i) => i.value === config.category)?.label ?? "—"} />
+                <PreviewRow label="Difficulty" value={interviewDifficulties.find((i) => i.value === config.difficulty)?.label ?? "—"} />
+                <PreviewRow label="Language" value={interviewLanguages.find((i) => i.value === config.language)?.label ?? "—"} />
+                <PreviewRow label="Questions" value={`${plannedQuestionCount} total`} />
+              </div>
+            </div>
+
+            {/* ── CENTER PANEL: Chat (primary) + Answer input ── */}
+            <div className="flex flex-col">
+
+              {/* Chat messages — the main content */}
+              <div
+                ref={conversationViewportRef}
+                className="flex-1 overflow-x-hidden overflow-y-auto bg-[linear-gradient(180deg,rgba(248,250,252,0.9),rgba(255,255,255,1))] px-6 py-6"
+                style={{ minHeight: "380px", maxHeight: "520px" }}
+              >
                 {conversation.length === 0 ? (
-                  <div className="rounded-2xl border border-dashed border-border bg-background/80 p-5 text-sm text-muted-foreground">
-                    The interview chat will appear here once the session starts.
+                  <div className="flex h-full flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-border bg-muted/20 p-10 text-center">
+                    <MessageSquareText className="size-10 text-muted-foreground/30" />
+                    <p className="text-sm font-medium text-muted-foreground">
+                      The conversation starts here
+                    </p>
+                    <p className="text-xs text-muted-foreground/70">
+                      Type your answer on the left and submit to begin the interview.
+                    </p>
                   </div>
                 ) : (
-                  conversation.map((message, index) => (
-                    <ChatBubble key={`${message.role}-${message.createdAt}-${index}`} message={message} />
-                  ))
+                  <div className="min-w-0 space-y-4">
+                    {conversation.map((message, index) => (
+                      <ChatBubble key={`${message.role}-${message.createdAt}-${index}`} message={message} />
+                    ))}
+                  </div>
                 )}
               </div>
-            </CardContent>
 
-            <CardFooter className="border-t border-border/60 bg-card/70 px-6 py-5">
-              <div className="w-full space-y-4">
+              {/* ── ANSWER INPUT ── */}
+              <div className="border-t border-border/60 bg-card/80 p-5 space-y-3">
+                {/* Role context chip */}
+                <div className="rounded-lg border border-border/60 bg-muted/30 px-3 py-2 text-xs text-muted-foreground">
+                  <span className="font-semibold text-foreground">Role framing:</span>{" "}
+                  {config.jobRole}.{" "}
+                  {config.strictMode
+                    ? "Formal tone is judged more strictly."
+                    : "Professional but natural delivery is acceptable."}
+                </div>
+
                 <Textarea
                   value={draftAnswer}
                   onChange={(event) => setDraftAnswer(event.target.value)}
@@ -404,134 +479,177 @@ export default function AIInterviewWorkspace({ resumeSessionId = null }: { resum
                         ? "Type your answer in Japanese or English..."
                         : "Type your answer here in Japanese..."
                   }
-                  className="min-h-[180px] rounded-2xl border-border bg-background"
+                  className="min-h-[130px] rounded-2xl border-border bg-background"
+                  style={{ wordBreak: "break-word", overflowWrap: "anywhere", whiteSpace: "pre-wrap" }}
                   disabled={isBusy}
                 />
 
-                <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-                  <div className="rounded-2xl border border-border bg-muted/30 px-4 py-3 text-sm text-muted-foreground">
-                    Role framing: <span className="font-medium text-foreground">{config.jobRole}</span>.{" "}
-                    {config.strictMode ? "Formal tone is judged more strictly." : "Professional but natural delivery is acceptable."}
-                  </div>
-                  <div className="flex flex-wrap gap-3">
-                    <Button variant="outline" onClick={() => setDraftAnswer("")} disabled={isBusy || !draftAnswer}>Clear</Button>
-                    <Button variant="outline" onClick={() => void evaluateAnswer("")} disabled={isBusy}>Skip</Button>
-                    {draftReview ? <Button variant="outline" onClick={() => {
-                      setDraftReview(null);
-                      setPendingNextQuestion(null);
-                      setPendingAssistantMessage("");
-                      setConversation((current) => current.slice(0, Math.max(0, current.length - 2)));
-                      setFeedbackState("idle");
-                    }} disabled={isBusy}>Retry</Button> : null}
-                    <Button variant="outline" className="border-rose-200 text-rose-700 hover:bg-rose-50 hover:text-rose-800" onClick={() => void persistReview(true)} disabled={isBusy}>End session</Button>
+                {/* Action row */}
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  {/* Left: secondary actions */}
+                  <div className="flex flex-wrap gap-2">
+                    <Button variant="outline" size="sm" onClick={() => setDraftAnswer("")} disabled={isBusy || !draftAnswer}>
+                      Clear
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={() => void evaluateAnswer("")} disabled={isBusy}>
+                      Skip
+                    </Button>
                     {draftReview ? (
-                      <Button className="bg-teal-700 text-white hover:bg-teal-800" onClick={() => void persistReview(shouldFinishAfterCurrent)} disabled={isBusy}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          setDraftReview(null);
+                          setPendingNextQuestion(null);
+                          setPendingAssistantMessage("");
+                          setConversation((current) => current.slice(0, Math.max(0, current.length - 2)));
+                          setFeedbackState("idle");
+                        }}
+                        disabled={isBusy}
+                      >
+                        Retry
+                      </Button>
+                    ) : null}
+                  </div>
+
+                  {/* Right: primary actions */}
+                  <div className="flex flex-wrap gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-rose-200 text-rose-700 hover:bg-rose-50 hover:text-rose-800"
+                      onClick={() => void persistReview(true)}
+                      disabled={isBusy}
+                    >
+                      End session
+                    </Button>
+                    {draftReview ? (
+                      <Button
+                        className="bg-teal-700 text-white hover:bg-teal-800"
+                        onClick={() => void persistReview(shouldFinishAfterCurrent)}
+                        disabled={isBusy}
+                      >
                         {shouldFinishAfterCurrent ? "Finish session" : "Next question"}
+                        <ArrowRight className="ml-2 size-4" />
                       </Button>
                     ) : (
-                      <Button className="bg-teal-700 text-white hover:bg-teal-800" onClick={() => void evaluateAnswer(draftAnswer)} disabled={isBusy}>
-                        Submit answer<ArrowRight className="ml-2 size-4" />
+                      <Button
+                        className="bg-teal-700 text-white hover:bg-teal-800"
+                        onClick={() => void evaluateAnswer(draftAnswer)}
+                        disabled={isBusy}
+                      >
+                        Submit answer
+                        <ArrowRight className="ml-2 size-4" />
                       </Button>
                     )}
                   </div>
                 </div>
               </div>
-            </CardFooter>
-          </Card>
+            </div>
 
-          <div className="space-y-6">
-            <Card className="border-border/70 shadow-sm">
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-lg">
-                  <Sparkles className="size-4 text-teal-700" />
-                  Session overview
-                </CardTitle>
-                <CardDescription>Keep the interview context visible without taking focus away from the chat.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-5">
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Progress</span>
-                    <span className="font-medium text-foreground">{progressValue}%</span>
+            {/* ── RIGHT PANEL: Feedback & Scores (always docked) ── */}
+            <div
+              className="overflow-y-auto border-t border-border/60 bg-slate-50/50 xl:border-t-0"
+              style={{ maxHeight: "700px" }}
+            >
+              {/* Thinking state */}
+              {feedbackState === "thinking" ? (
+                <div className="flex h-full flex-col items-center justify-center gap-4 p-8 text-center">
+                  <div className="rounded-full border border-teal-100 bg-teal-50 p-4">
+                    <Brain className="size-7 animate-pulse text-teal-600" />
                   </div>
-                  <Progress value={progressValue}>
-                    <ProgressTrack className="h-2 rounded-full bg-slate-200">
-                      <ProgressIndicator className="bg-teal-700" />
-                    </ProgressTrack>
-                  </Progress>
+                  <div className="space-y-1.5">
+                    <p className="text-sm font-semibold text-slate-700">Evaluating your answer...</p>
+                    <p className="text-xs text-muted-foreground">Preparing scores and coaching notes.</p>
+                  </div>
+                  <div className="mt-2 flex gap-1">
+                    {[0, 1, 2].map((i) => (
+                      <div
+                        key={i}
+                        className="size-1.5 rounded-full bg-teal-400"
+                        style={{ animation: `pulse 1s ease-in-out ${i * 0.2}s infinite` }}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <PreviewRow label="Role" value={config.jobRole} />
-                <PreviewRow label="Category" value={interviewCategories.find((item) => item.value === config.category)?.label ?? "-"} />
-                <PreviewRow label="Difficulty" value={interviewDifficulties.find((item) => item.value === config.difficulty)?.label ?? "-"} />
-                <PreviewRow label="Language" value={interviewLanguages.find((item) => item.value === config.language)?.label ?? "-"} />
-                <PreviewRow label="Question plan" value={`${plannedQuestionCount} total`} />
-              </CardContent>
-            </Card>
+              ) : feedbackState === "shown" && draftReview ? (
+                /* ── Feedback shown ── */
+                <div className="space-y-4 p-5">
 
-            {feedbackState === "thinking" ? (
-              <Card className="border-teal-100 bg-teal-50/70">
-                <CardContent className="flex items-center gap-3 p-5 text-sm text-slate-700">
-                  <Brain className="size-4 animate-pulse text-teal-700" />
-                  AI is judging the answer and preparing the next interviewer response...
-                </CardContent>
-              </Card>
-            ) : null}
-
-            {feedbackState === "shown" && draftReview ? (
-              <Card className="border-border/70 shadow-sm">
-                <CardHeader>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <Badge className="bg-teal-700 text-white hover:bg-teal-700">Latest review</Badge>
-                      <CardTitle className="mt-3 text-3xl">{draftReview.feedback.overall}/100</CardTitle>
-                      <CardDescription className="mt-2 text-sm leading-6">{draftReview.feedback.summary}</CardDescription>
+                  {/* Overall score */}
+                  <div className="rounded-2xl border border-teal-100 bg-gradient-to-br from-teal-50 to-white p-5">
+                    <Badge className="bg-teal-700 text-white hover:bg-teal-700">Latest review</Badge>
+                    <div className="mt-3 flex items-end gap-1.5">
+                      <span className="text-5xl font-bold tabular-nums text-foreground">{draftReview.feedback.overall}</span>
+                      <span className="mb-1.5 text-xl text-muted-foreground">/100</span>
                     </div>
-                    <div className="rounded-2xl border border-teal-100 bg-teal-50 px-3 py-2 text-xs font-medium text-teal-800">
-                      {draftReview.feedback.interviewerLine}
-                    </div>
+                    <p className="mt-2 text-xs leading-5 text-muted-foreground">{draftReview.feedback.summary}</p>
                   </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
+
+                  {/* Interviewer line */}
+                  <div className="rounded-xl border border-slate-200 bg-white p-3 text-xs italic leading-5 text-slate-600">
+                    "{draftReview.feedback.interviewerLine}"
+                  </div>
+
+                  {/* Metric bars */}
                   <div className="space-y-3">
+                    <div className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Skill breakdown</div>
                     {draftReview.feedback.metrics.map((metric) => (
-                      <div key={metric.label} className="rounded-2xl border border-border p-3">
-                        <div className="mb-2 flex items-center justify-between text-sm">
-                          <span className="font-medium text-foreground">{metric.label}</span>
-                          <span className="text-muted-foreground">{metric.value}</span>
+                      <div key={metric.label} className="space-y-1.5">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-semibold text-foreground">{metric.label}</span>
+                          <span className="text-xs tabular-nums text-muted-foreground">{metric.value}/100</span>
                         </div>
                         <Progress value={metric.value}>
-                          <ProgressTrack className="h-2 rounded-full bg-slate-200">
+                          <ProgressTrack className="h-1.5 rounded-full bg-slate-200">
                             <ProgressIndicator className={metricColors[metric.label]} />
                           </ProgressTrack>
                         </Progress>
                       </div>
                     ))}
                   </div>
+
+                  {/* Feedback lists */}
                   <FeedbackList title="Strengths" items={draftReview.feedback.strengths} positive />
                   <FeedbackList title="What to improve" items={draftReview.feedback.weakPoints} />
                   <FeedbackList title="Next answer tips" items={draftReview.feedback.suggestions} />
                   <ResponseCard title="Stronger sample answer" content={draftReview.feedback.betterSampleAnswer} />
-                  {draftReview.feedback.naturalJapaneseVersion ? <ResponseCard title="Natural Japanese" content={draftReview.feedback.naturalJapaneseVersion} /> : null}
-                  {draftReview.feedback.businessPoliteVersion ? <ResponseCard title="Business polite version" content={draftReview.feedback.businessPoliteVersion} /> : null}
-                </CardContent>
-              </Card>
-            ) : (
-              <Card className="border-border/70 shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-lg">How feedback appears</CardTitle>
-                  <CardDescription>Scores and coaching show up here after each submitted answer so the chat stays primary.</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm text-muted-foreground">
-                  <p>Overall score gives a quick read on answer quality.</p>
-                  <p>Metric bars break down clarity, confidence, relevance, grammar, and politeness.</p>
-                  <p>Actionable suggestions stay grouped in one place before you move to the next question.</p>
-                </CardContent>
-              </Card>
-            )}
+                  {draftReview.feedback.naturalJapaneseVersion ? (
+                    <ResponseCard title="Natural Japanese" content={draftReview.feedback.naturalJapaneseVersion} />
+                  ) : null}
+                  {draftReview.feedback.businessPoliteVersion ? (
+                    <ResponseCard title="Business polite version" content={draftReview.feedback.businessPoliteVersion} />
+                  ) : null}
+                </div>
+              ) : (
+                /* ── Idle placeholder ── */
+                <div className="flex h-full flex-col items-center justify-center gap-5 p-8 text-center">
+                  <div className="w-full rounded-2xl border border-dashed border-border bg-white/60 p-6">
+                    <Sparkles className="mx-auto mb-3 size-7 text-muted-foreground/30" />
+                    <p className="text-sm font-semibold text-muted-foreground">Scores appear here</p>
+                    <p className="mt-1.5 text-xs leading-5 text-muted-foreground/70">
+                      Submit an answer to see your overall score, skill breakdown, and coaching feedback.
+                    </p>
+                  </div>
+                  <div className="w-full space-y-2.5 text-left">
+                    <div className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground/60">What you'll see</div>
+                    {["Overall score out of 100", "Clarity, Confidence, Relevance bars", "Strengths & improvement tips", "Sample stronger answer"].map((item) => (
+                      <div key={item} className="flex items-center gap-2 text-xs text-muted-foreground/70">
+                        <div className="size-1.5 rounded-full bg-teal-300" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       ) : null}
 
+      {/* ══════════════════════════════════════════
+          SUMMARY SCREEN
+      ══════════════════════════════════════════ */}
       {screen === "summary" ? (
         <div className="space-y-6">
           <Card className="bg-slate-950 text-white">
@@ -617,30 +735,21 @@ function SummaryPill({ label, value }: { label: string; value: string }) {
   return <div className="rounded-xl border border-white/10 bg-white/5 p-4"><div className="text-xs uppercase tracking-wide text-slate-400">{label}</div><div className="mt-2 text-lg font-semibold">{value}</div></div>;
 }
 
-function SessionMiniStat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-2xl border border-border/70 bg-background/85 px-4 py-3 shadow-sm">
-      <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">{label}</div>
-      <div className="mt-2 text-lg font-semibold text-foreground">{value}</div>
-    </div>
-  );
-}
-
 function ChatBubble({ message }: { message: ChatMessage }) {
   const isAssistant = message.role === "assistant";
 
   return (
-    <div className={cn("flex", isAssistant ? "justify-start" : "justify-end")}>
+    <div className={cn("flex min-w-0 overflow-hidden", isAssistant ? "justify-start" : "justify-end")}>
       <div
         className={cn(
-          "max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-6 shadow-sm",
+          "min-w-0 max-w-[80%] break-words rounded-2xl px-4 py-3 text-sm leading-6 shadow-sm",
           isAssistant ? "border border-teal-100 bg-teal-50 text-slate-900" : "bg-slate-950 text-white"
         )}
       >
         <div className={cn("mb-1 text-[11px] font-semibold uppercase tracking-[0.18em]", isAssistant ? "text-teal-700" : "text-slate-300")}>
           {isAssistant ? "Interviewer" : "You"}
         </div>
-        <p className="whitespace-pre-line">{message.content}</p>
+        <p className="whitespace-pre-line break-words">{message.content}</p>
       </div>
     </div>
   );
